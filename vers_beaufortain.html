@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Vers Beaufortain</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RunTrail">
+<meta name="theme-color" content="#EFEDE2">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAG+0lEQVR4nO2dwW3eOBBGlcU2YPjiAraANOAOfFns2T0E2DoWSA85B7mkAzfgAva0p1wMt7AHGbJMaaghNeSMpPduifVLP8D3fxxSEvnp9eW/AWCN37y/AMQFOUAEOUAEOUAEOUAEOUAEOUAEOUAEOUDk96Znf335Jf3p5vau6aVhP/ZyZISQDkOUmFjKodRC+iCKRMNGDkmLTHsvP4Ii0fi0867sso0rWtfkJGDOLjmSRt3ZorZng/3Uy9GooqRQjUPlPEe7JpyfrbrCBRNq5Gj948aPIBR3K1Nrdcj8nteCJWXJ4fU7Jj9cKJCjf6lI/+JLTc3RM+TpUBzRyuHY/U9XJDw6wy17EFHJ4T5qIDxcIDlAZFsO99hIrk54dKPtk2AQiqfHh/k/77/9zB+PHJcg0WL+nxlFqDnOz6oZmr9uyBGk4Ei+A2WHnrwZ+WNIjjOjMSNzJHKACHKcFn1sSMcjB4ggB4ggB4ggB4ggx2nZnB3fPH5DjlDzTqFm5K4AyXFm9OGxeiRynBnlVIfkEHJcnUy6qF5qitDZR/gOB0XKD57ngDcJnh4fSscv2tchfX+4xIYL1BznpPSu2ypaORwnPIiNOp4eH3YqUvCWvcuyKqzlUsHSidJqY6SgW+n/WjNm+FJWc7i/8QabWMXGUFGQzouPdvkxPzlmeFG5YFzTwKc32c+UH9WxMVQPZdvVH5hhwv23n3u0GGEdUntK3zoMy65JsKT9qquQ5QePa8aZ2DtDenN7t6rIpijSYcsTHg6vqDCZFZ2zd+3zOTuLj6M7McelZzEpQudY3lup/tGfIC2GBj/c6qvvnzgfsb9lrxzInMCGJdOiBu5FqMkXaPs8xykNWCX54Q59K49GocUt+0407XSSrLLykifBDMjfzuhWi0xPfFmdkORoSFIY9rHEsDtDDgMapbo7yGHGcpCytMR3uFsKNYcxnWOj6WwbydGWpLs5Vo+DHPXo+4jDaTFieW/lapjfy6j+Ao2+BslRyZ57GUcpSylIu3IULUboVmqoeMLb8KHwoerF1wroVjph2JajZx1CCDlqMJkSrWvdnvPxdCt7KUp4kwFOt1ESybGXikX7Sj+yOmTtUHOQHNGZm9F5QoXkKMB9IGr1cKgS5CjDvHlKt1HqGR5Mgmkxf0pUI5n5w11FkBwOaJ4QS0qNbkXoHORQYRvvyulU93dukSMEUpD4lsAMZQuwnX3KnM39YYARkqMA82d2phN6TXPlITn8cZzmysNQdp0v/3yZ//Pr31/7XLf/q5QZSI6URIs5LRTxnebKQ83xgYwZm3+tI/KzxyTHO8q2b9fF9Hm+Sw/JEYhQZgzIMaHvMlp0LjFBDhBBDhBBDhBBDhBBjjf0A9Rus6XuIAeIcG/lnb+e//3++Y/8Mb6xkV8j2nxhT+T4QN4PFzP0i4ab70bC9PkbyQ2wRJHgWkjsVAQ5PhDkESxJi3xj130qA3Ks4HgDbNnAdU1rch7kCIT5jkQ7T3j1oaz7G44jyaZEVnuMJOcp3Urr6nIM3V9AXdJ6C7PlVlrKD166W4nwiF7P3TBLr0VyvHNuM4byDV+vK4d7teGyg26RH5fuVgbXiQ3H/diVl75ucox4PfztaMb8ovnwuHpyuBBhS3bNd7hccriXGnMcN0hktLKO78SGb4cyZ7NzuZYcLXbmPTHXkiPhUiOUVfLhcRg59v/KyYlSDjNasZqQuObERh7pi0VMjuVPfNmi1TEQ+a32aISTQ9/qeypK/NAQSI55Y6+uqLeMDU2QUGpUE0WOTBMqO4JMkEQYtYYtOAZ5zBJFjs3NmzWxsfwfJjb24CbHZjtJabE/SECJjxyrzTY1uab56+oP6tAiesshVZ0THTY+AiVdX4es7ko2KapIQEnX5NisOk0ukVyFaKmmuRz55m/UbMvT4kcFDbsVqaQItYIzZKiU4/P9n/N/Pj/9SA5IJhiWUV93XehJ8V3ZRIs5oyImY5BTEnaS1OaubMaM6a+rHjAfdUQKupW8GdMxyy6G2Dgo2uTQmDEdObcBM45Lw9EKWiTc3N6Nvfvry684ZUemElLJoY+N6fjnJ8w4PFFu2V8E5XuI3cgPoJADRJCjN3HCY3PeBTk8cfTDbPGW5dSF7fFXI85QZch+GZLDB9/OxXjxFn0YEBuldPZDf7mC5NC0OmboKV2+zYSidWPKupV822NGKZ39KF1RqPJF6s3nOUBP60Vqqy9xmLfsz01TP6pPjhyBiLYwPnLEgi01YAM244EN3LfxYgPAuIxNW6eISUmLHNHRz4Wwdeil6XzHjhtvIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIIIcIPI/i+b2PzjvvvkAAAAASUVORK5CYII=">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#EFEDE2;
+    --contour-soft:#DEDACA;
+    --ink:#1F2A33;
+    --ink-soft:#5B6A66;
+    --ink-faint:#8A968F;
+    --route:#B24A2E;
+    --route-soft:#E3B7A9;
+    --moss:#5F7A52;
+    --moss-soft:#C7D3BD;
+    --card:#F8F6EC;
+    --card-line:#E3E0D2;
+    --marathon:#4B6E86;
+    --marathon-soft:#C4D3DB;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
+  html,body{margin:0;height:100%;background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);overscroll-behavior:none;}
+  body{
+    display:flex;flex-direction:column;
+    background-image:
+      radial-gradient(circle at 12% 6%, transparent 0, transparent 40px, var(--contour-soft) 41px, transparent 42px),
+      radial-gradient(circle at 90% 22%, transparent 0, transparent 60px, var(--contour-soft) 61px, transparent 62px),
+      radial-gradient(circle at 20% 78%, transparent 0, transparent 50px, var(--contour-soft) 51px, transparent 52px);
+    background-attachment:fixed;
+  }
+
+  header.topbar{
+    padding:calc(var(--safe-top) + 14px) 18px 12px;
+    flex-shrink:0;
+  }
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--route);margin:0 0 4px;}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;margin:0;letter-spacing:-.01em;}
+
+  main{flex:1;overflow-y:auto;padding:0 18px calc(100px + var(--safe-bottom));-webkit-overflow-scrolling:touch;}
+  main::-webkit-scrollbar{display:none;}
+
+  .view{display:none;}
+  .view.active{display:block;}
+
+  /* --- route map --- */
+  .route-map{width:100%;height:84px;margin:6px 0 14px;display:block;}
+
+  /* --- today card --- */
+  .today-card{background:var(--ink);border-radius:20px;padding:16px 18px;margin-bottom:16px;color:var(--bg);}
+  .today-card .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--route-soft);margin-bottom:6px;}
+  .today-card .main{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .today-card .txt{font-size:15px;font-weight:500;line-height:1.35;flex:1;}
+  .today-card .sub{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B9C2BC;margin-top:6px;}
+  .today-check{width:40px;height:40px;border-radius:50%;border:2px solid var(--bg);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;transition:background .15s;}
+  .today-check.done{background:var(--moss);border-color:var(--moss);}
+  .today-check svg{width:18px;height:18px;pointer-events:none;}
+  .ppg-btn{margin-top:12px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:var(--bg);border-radius:20px;padding:7px 14px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;cursor:pointer;}
+  .ppg-btn svg{width:14px;height:14px;stroke:var(--bg);}
+  .no-session{font-size:13px;color:var(--ink-soft);text-align:center;padding:40px 20px;}
+
+  .legend{display:flex;gap:14px;margin-bottom:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-soft);flex-wrap:wrap;}
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .legend i{width:7px;height:7px;border-radius:50%;display:inline-block;}
+
+  .stats-row{display:flex;gap:6px;margin-bottom:18px;}
+  .stat-card{flex:1;background:var(--card);border:1px solid var(--card-line);border-radius:14px;padding:10px 6px;text-align:center;min-width:0;}
+  .stat-card b{display:block;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--ink);white-space:nowrap;}
+  .stat-card span{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-faint);}
+
+  .section-label{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--ink);margin:18px 2px 8px;}
+
+  /* --- Plan tab: block accordions --- */
+  .block-wrap{margin-bottom:10px;border-radius:16px;overflow:hidden;border:1px solid var(--card-line);background:var(--card);}
+  .block-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;gap:10px;}
+  .block-head .left{flex:1;min-width:0;}
+  .block-head h2{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin:0 0 2px;color:var(--ink);}
+  .block-head .dr{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);}
+  .block-head .right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+  .block-head .pct{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+  .block-bar{width:36px;height:36px;flex-shrink:0;}
+  .chev{width:16px;height:16px;stroke:var(--ink-faint);transition:transform .2s;flex-shrink:0;}
+  .block-wrap.open .chev{transform:rotate(180deg);}
+  .block-body{display:none;padding:0 12px 12px;}
+  .block-wrap.open .block-body{display:block;}
+
+  .theme-marathon{border-left:3px solid var(--marathon);}
+  .theme-trail{border-left:3px solid var(--moss);}
+  .theme-transition{border-left:3px solid var(--ink-faint);}
+
+  .week{margin-bottom:8px;border-radius:12px;background:var(--bg);border:1px solid var(--card-line);}
+  .week-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;cursor:pointer;}
+  .week-head .lbl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--moss);text-transform:uppercase;letter-spacing:.04em;}
+  .week-head .vol{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);}
+  .week-body{display:none;}
+  .week.open .week-body{display:block;}
+  .week.current{border-color:var(--route);}
+  .week.current .week-head .lbl{color:var(--route);}
+
+  .row{display:flex;align-items:center;gap:12px;padding:9px 12px;border-top:1px solid var(--card-line);}
+  .row .date{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);width:34px;flex-shrink:0;line-height:1.2;}
+  .row .date b{display:block;font-size:12.5px;color:var(--ink-soft);}
+  .marker{width:8px;height:8px;flex-shrink:0;border-radius:50%;}
+  .marker.rest{background:transparent;border:1.5px solid var(--contour-soft);}
+  .marker.easy{background:var(--moss-soft);}
+  .marker.quality{background:var(--route);}
+  .marker.long{background:var(--moss);}
+  .marker.race{background:var(--route);width:10px;height:10px;box-shadow:0 0 0 3px rgba(178,74,46,.18);}
+  .row .txt{font-size:12.5px;line-height:1.4;flex:1;color:var(--ink);}
+  .row.done .txt{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--ink-faint);}
+  .row .ppgtag{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--route);border:1px solid var(--route-soft);border-radius:8px;padding:1px 5px;margin-left:6px;white-space:nowrap;}
+  .check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);flex-shrink:0;cursor:pointer;position:relative;background:transparent;}
+  .check.done{background:var(--moss);border-color:var(--moss);}
+  .check.done::after{content:'';position:absolute;left:6px;top:3px;width:4px;height:8px;border:solid var(--card);border-width:0 2px 2px 0;transform:rotate(45deg);}
+
+  /* --- PPG tab --- */
+  .lead{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin:4px 0 14px;}
+  .phase-pill{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--card-line);border-radius:20px;padding:6px 12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);margin:0 6px 8px 0;}
+  .phase-pill b{color:var(--route);font-weight:500;}
+  .exercise{background:var(--card);border:1px solid var(--card-line);border-radius:16px;margin-bottom:10px;overflow:hidden;}
+  .ex-head{display:flex;align-items:center;gap:12px;padding:13px 14px;}
+  .ex-num{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;flex-shrink:0;}
+  .ex-head .name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:var(--ink);flex:1;}
+  .ex-head .dose{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--route);white-space:nowrap;}
+  .ex-body{padding:0 14px 14px 54px;}
+  .ex-row{margin-bottom:8px;}
+  .ex-row:last-child{margin-bottom:0;}
+  .ex-row .lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);margin-bottom:2px;}
+  .ex-row .val{font-size:12.5px;line-height:1.5;color:var(--ink);}
+  .prog-note{display:flex;gap:8px;align-items:flex-start;margin-top:10px;padding-top:10px;border-top:1px dashed var(--card-line);}
+  .prog-note svg{width:14px;height:14px;flex-shrink:0;margin-top:1px;stroke:var(--ink-faint);}
+  .prog-note span{font-size:11px;color:var(--ink-faint);line-height:1.5;}
+  .transition{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);padding:4px 4px 4px 20px;margin-bottom:2px;}
+  .progress-card{background:var(--ink);color:var(--bg);border-radius:16px;padding:14px 16px;margin-bottom:6px;}
+  .progress-card .row2{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;margin-bottom:6px;color:#B9C2BC;}
+  .progress-card .row2 b{color:var(--bg);font-weight:500;}
+  .bar-track{height:6px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+  .bar-fill{height:100%;background:var(--route);border-radius:4px;}
+
+  /* --- reglages --- */
+  .settings-card{background:var(--card);border:1px solid var(--card-line);border-radius:16px;padding:16px;margin-bottom:12px;}
+  .settings-card h3{font-family:'Space Grotesk',sans-serif;font-size:14px;margin:0 0 8px;}
+  .settings-card p{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 12px;}
+
+  .pace-card{background:var(--card);border:1px solid var(--card-line);border-radius:16px;margin-bottom:14px;overflow:hidden;}
+  .pace-head{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--ink);}
+  .pace-body{display:none;padding:0 16px 12px;}
+  .pace-card.open .pace-body{display:block;}
+  .pace-card.open .chev{transform:rotate(180deg);}
+  .pace-row{display:flex;align-items:baseline;gap:8px;padding:7px 0;border-top:1px solid var(--card-line);}
+  .pace-row .pace-abbr{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:var(--route);width:70px;flex-shrink:0;}
+  .pace-row .pace-name{font-size:11.5px;color:var(--ink-soft);flex:1;}
+  .pace-row .pace-val{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);white-space:nowrap;}
+  .btn-danger{width:100%;background:var(--route);color:var(--bg);border:none;border-radius:12px;padding:12px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
+
+  /* --- tab bar --- */
+  .tabbar{
+    position:fixed;bottom:0;left:0;right:0;height:calc(74px + var(--safe-bottom));
+    background:rgba(248,246,236,.92);backdrop-filter:blur(10px);
+    border-top:1px solid var(--card-line);
+    display:flex;align-items:flex-start;padding-top:10px;z-index:40;
+  }
+  .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;padding:0;cursor:pointer;}
+  .tab svg{width:24px;height:24px;}
+  .tab span{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;}
+  .tab.active svg{stroke:var(--route);}
+  .tab.active span{color:var(--route);}
+  .tab:not(.active) svg{stroke:var(--ink-faint);}
+  .tab:not(.active) span{color:var(--ink-faint);}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <p class="eyebrow" id="header-eyebrow">Asnières → Paris → Beaufortain</p>
+  <h1 id="header-title">Vers Beaufortain</h1>
+</header>
+
+<main>
+  <!-- AUJOURD'HUI -->
+  <section class="view active" id="view-today">
+    <svg class="route-map" viewBox="0 0 350 84">
+      <path d="M8,62 Q50,56 75,59 T140,44 Q175,22 205,42 T265,31 Q300,22 340,18" fill="none" stroke="#B24A2E" stroke-width="2" stroke-dasharray="1,6" stroke-linecap="round"/>
+      <circle cx="8" cy="62" r="4" fill="#1F2A33"/>
+      <circle cx="140" cy="44" r="4" fill="#5F7A52"/>
+      <circle cx="205" cy="42" r="4" fill="#5F7A52"/>
+      <circle cx="340" cy="18" r="5" fill="#B24A2E"/>
+      <text x="8" y="76" font-family="IBM Plex Mono, monospace" font-size="8" fill="#5B6A66">Asnières</text>
+      <text x="132" y="34" font-family="IBM Plex Mono, monospace" font-size="8" fill="#5B6A66" text-anchor="end">Boulogne</text>
+      <text x="205" y="76" font-family="IBM Plex Mono, monospace" font-size="8" fill="#5B6A66" text-anchor="middle">Paris</text>
+      <text x="340" y="10" font-family="IBM Plex Mono, monospace" font-size="8" fill="#B24A2E" text-anchor="end">Beaufortain</text>
+      <circle id="today-marker" cx="8" cy="62" r="5" fill="#1F2A33" stroke="#F8F6EC" stroke-width="2"/>
+    </svg>
+    <div id="today-slot"></div>
+    <div class="legend">
+      <span><i style="background:#C7D3BD"></i>footing</span>
+      <span><i style="background:#B24A2E"></i>qualité</span>
+      <span><i style="background:#5F7A52"></i>longue</span>
+      <span><i style="background:transparent;border:1.3px solid #DEDACA;border-radius:50%;width:6px;height:6px"></i>repos</span>
+    </div>
+    <div class="stats-row" id="stats-row"></div>
+    <div class="pace-card" id="pace-toggle-today">
+      <div class="pace-head" onclick="document.getElementById('pace-toggle-today').classList.toggle('open')">
+        <span>Allures de référence</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="pace-body">
+        <div class="pace-row" style="border-top:none"><span class="pace-abbr">EF</span><span class="pace-name">Endurance fondamentale</span><span class="pace-val">5'15-5'45/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">Fac</span><span class="pace-name">Footing facile / récup</span><span class="pace-val">5'30-6'00/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">AS</span><span class="pace-name">Allure semi (obj. 1h35)</span><span class="pace-val">4'30/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">MA</span><span class="pace-name">Allure marathon (obj. 3h20)</span><span class="pace-val">4'44/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">Seuil</span><span class="pace-name">Seuil / tempo</span><span class="pace-val">4'20-4'25/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">A10</span><span class="pace-name">Allure 10km</span><span class="pace-val">4'10-4'15/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">A5 / VMA</span><span class="pace-name">Allure 5km, fractionné court</span><span class="pace-val">3'45-4'00/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">Côtes/fartlek</span><span class="pace-name">Effort équivalent plat</span><span class="pace-val">4'00-4'10/km</span></div>
+      </div>
+    </div>
+    <div class="section-label">Prochains jours</div>
+    <div class="week" style="border:1px solid var(--card-line)"><div class="week-body" style="display:block" id="upcoming-list"></div></div>
+  </section>
+
+  <!-- PLAN -->
+  <section class="view" id="view-plan">
+    <div class="pace-card" id="pace-toggle">
+      <div class="pace-head" onclick="document.getElementById('pace-toggle').classList.toggle('open')">
+        <span>Allures de référence</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="pace-body">
+        <div class="pace-row"><span class="pace-abbr">EF</span><span class="pace-name">Endurance fondamentale</span><span class="pace-val">5'15-5'45/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">Fac</span><span class="pace-name">Footing facile / récup</span><span class="pace-val">5'30-6'00/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">AS</span><span class="pace-name">Allure semi (obj. 1h35)</span><span class="pace-val">4'30/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">MA</span><span class="pace-name">Allure marathon (obj. 3h20)</span><span class="pace-val">4'44/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">Seuil</span><span class="pace-name">Seuil / tempo</span><span class="pace-val">4'20-4'25/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">A10</span><span class="pace-name">Allure 10km</span><span class="pace-val">4'10-4'15/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">A5 / VMA</span><span class="pace-name">Allure 5km, fractionné court</span><span class="pace-val">3'45-4'00/km</span></div>
+        <div class="pace-row"><span class="pace-abbr">Côtes/fartlek</span><span class="pace-name">Effort équivalent plat</span><span class="pace-val">4'00-4'10/km</span></div>
+      </div>
+    </div>
+    <div id="blocks-container"></div>
+  </section>
+
+  <!-- PPG -->
+  <section class="view" id="view-ppg">
+    <p class="lead">7 exercices, 15 minutes, sans matériel. Fais-les dans l'ordre, en respectant les temps de repos.</p>
+    <div class="phase-pill"><b>20-30s</b>&nbsp;entre séries&nbsp;·&nbsp;<b>45s</b>&nbsp;entre exercices</div>
+    <div class="phase-pill">Mardi + Vendredi, sur tout le plan</div>
+
+    <div class="exercise">
+      <div class="ex-head"><div class="ex-num">1</div><div class="name">Planche</div><div class="dose">3×30s</div></div>
+      <div class="ex-body">
+        <div class="ex-row"><div class="lbl">Position</div><div class="val">Allongé sur le ventre, appui sur les avant-bras (coudes sous les épaules) et les pointes de pieds, corps aligné tête-talons.</div></div>
+        <div class="ex-row"><div class="lbl">Mouvement</div><div class="val">Contracte le ventre, ne laisse pas le bassin tomber ni monter.</div></div>
+        <div class="ex-row"><div class="lbl">Repos entre séries</div><div class="val">20-30s, relâche complètement avant de repartir.</div></div>
+        <div class="prog-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 12h18M14 6l6 6-6 6"/></svg><span>Progresse jusqu'à 3×40-45s avec l'entraînement.</span></div>
+      </div>
+    </div>
+    <div class="transition">↓ 45s avant l'exercice suivant</div>
+
+    <div class="exercise">
+      <div class="ex-head"><div class="ex-num">2</div><div class="name">Planche latérale</div><div class="dose">2×20s/côté</div></div>
+      <div class="ex-body">
+        <div class="ex-row"><div class="lbl">Position</div><div class="val">Allongé sur le côté, appui sur un avant-bras, corps aligné des pieds à la tête.</div></div>
+        <div class="ex-row"><div class="lbl">Mouvement</div><div class="val">Ne laisse pas la hanche tomber vers le sol.</div></div>
+        <div class="ex-row"><div class="lbl">Repos entre séries</div><div class="val">20-30s, alterne les côtés à chaque série.</div></div>
+        <div class="prog-note"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 12h18M14 6l6 6-6 6"/></svg><span>Progresse jusqu'à 2×35-40s.</span></div>
+      </div>
+    </div>
+    <div class="transition">↓ 45s avant l'exercice suivant</div>
+
+    <div class="exercise">
+      <div class="ex-head"><div class="ex-num">3</div><div class="name">Pont fessier</div><div class="dose">3×15</div></div>
+      <div class="ex-body">
+        <div class="ex-row"><div class="lbl">Position</div><div class="val">Allongé sur le dos, genoux pliés, pieds à plat au sol.</div></div>
+        <div class="ex-row"><div class="lbl">Mouvement</div><div class="val">Pousse dans les talons pour lever le bassin (ligne droite genoux-hanches-épaules), serre les fessiers en haut.</div></div>
+        <div class="ex-row"><div class="lbl">Repos entre séries</div><div class="val">20-30s.</div></div>
+      </div>
+    </div>
+    <div class="transition">↓ 45s avant l'exercice suivant</div>
+
+    <div class="exercise">
+      <div class="ex-head"><div class="ex-num">4</div><div class="name">Squats poids du corps</div><div class="dose">3×15</div></div>
+      <div class="ex-body">
+        <div class="ex-row"><div class="lbl">Position</div><div class="val">Debout, pieds largeur épaules.</div></div>
+        <div class="ex-row"><div class="lbl">Mouvement</div><div class="val">Descends comme pour t'asseoir, les genoux suivent la direction des pieds, garde le dos droit.</div></div>
+        <div class="ex-row"><div class="lbl">Repos entre séries</div><div class="val">20-30s.</div></div>
+      </div>
+    </div>
+    <div class="transition">↓ 45s avant l'exercice suivant</div>
+
+    <div class="exercise">
+      <div class="ex-head"><div class="ex-num">5</div><div class="name">Fentes avant alternées</div><div class="dose">3×10/jambe</div></div>
+      <div class="ex-body">
+        <div class="ex-row"><div class="lbl">Position</div><div class="val">Debout, pieds joints.</div></div>
+        <div class="ex-row"><div class="lbl">Mouvement</div><div class="val">Grand pas en avant, descends jusqu'à ce que le genou arrière frôle le sol, reviens, alterne les jambes.</div></div>
+        <div class="ex-row"><div class="lbl">Repos entre séries</div><div class="val">20-30s.</div></div>
+      </div>
+    </div>
+    <div class="transition">↓ 45s avant l'exercice suivant</div>
+
+    <div class="exercise">
+      <div class="ex-head"><div class="ex-num">6</div><div class="name">Montées sur pointes</div><div class="dose">3×20</div></div>
+      <div class="ex-body">
+        <div class="ex-row"><div class="lbl">Position</div><div class="val">Debout, éventuellement en appui léger sur un mur pour l'équilibre.</div></div>
+        <div class="ex-row"><div class="lbl">Mouvement</div><div class="val">Monte lentement sur la pointe des pieds, redescends lentement sans reposer les talons brusquement.</div></div>
+        <div class="ex-row"><div class="lbl">Repos entre séries</div><div class="val">20-30s.</div></div>
+      </div>
+    </div>
+    <div class="transition">↓ 45s avant l'exercice suivant</div>
+
+    <div class="exercise">
+      <div class="ex-head"><div class="ex-num">7</div><div class="name">Bird dog</div><div class="dose">2×10/côté</div></div>
+      <div class="ex-body">
+        <div class="ex-row"><div class="lbl">Position</div><div class="val">À quatre pattes, mains sous les épaules, genoux sous les hanches.</div></div>
+        <div class="ex-row"><div class="lbl">Mouvement</div><div class="val">Tends le bras droit et la jambe gauche à l'horizontale en gardant le dos plat et le bassin stable, reviens, alterne.</div></div>
+        <div class="ex-row"><div class="lbl">Repos entre séries</div><div class="val">20-30s.</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Progression générale</div>
+    <div class="progress-card"><div class="row2"><span>Semaines de reprise</span><b>1 tour</b></div><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div></div>
+    <div class="progress-card"><div class="row2"><span>Cœur des blocs</span><b>2 tours + bird dog</b></div><div class="bar-track"><div class="bar-fill" style="width:66%"></div></div></div>
+    <div class="progress-card"><div class="row2"><span>Semaines de course/affûtage</span><b>Allégé ou coupé</b></div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--moss)"></div></div></div>
+  </section>
+
+  <!-- REGLAGES -->
+  <section class="view" id="view-settings">
+    <div class="settings-card">
+      <h3>Progression</h3>
+      <p>Tes séances cochées sont enregistrées uniquement sur cet appareil (aucune donnée envoyée ailleurs).</p>
+      <button class="btn-danger" id="reset-btn">Réinitialiser toute la progression</button>
+    </div>
+    <div class="settings-card">
+      <h3>Allures de référence</h3>
+      <div class="pace-row" style="border-top:none"><span class="pace-abbr">EF</span><span class="pace-name">Endurance fondamentale</span><span class="pace-val">5'15-5'45/km</span></div>
+      <div class="pace-row"><span class="pace-abbr">Fac</span><span class="pace-name">Footing facile / récup</span><span class="pace-val">5'30-6'00/km</span></div>
+      <div class="pace-row"><span class="pace-abbr">AS</span><span class="pace-name">Allure semi (1h35)</span><span class="pace-val">4'30/km</span></div>
+      <div class="pace-row"><span class="pace-abbr">MA</span><span class="pace-name">Allure marathon (3h20)</span><span class="pace-val">4'44/km</span></div>
+      <div class="pace-row"><span class="pace-abbr">Seuil</span><span class="pace-name">Seuil / tempo</span><span class="pace-val">4'20-4'25/km</span></div>
+      <div class="pace-row"><span class="pace-abbr">A10</span><span class="pace-name">Allure 10km</span><span class="pace-val">4'10-4'15/km</span></div>
+      <div class="pace-row"><span class="pace-abbr">A5 / VMA</span><span class="pace-name">Allure 5km, fractionné court</span><span class="pace-val">3'45-4'00/km</span></div>
+      <div class="pace-row"><span class="pace-abbr">Côtes/fartlek</span><span class="pace-name">Effort équivalent plat</span><span class="pace-val">4'00-4'10/km</span></div>
+    </div>
+    <div class="settings-card">
+      <h3>Repères</h3>
+      <p>Marathon de Paris — objectif 3h20, 11 avril 2027<br>Semi de Boulogne-Billancourt — objectif 1h35, 15 nov 2026<br>Trail du Beaufortain — 110km / 7800m D+, 18-19 juillet 2027</p>
+    </div>
+  </section>
+</main>
+
+<div class="tabbar">
+  <button class="tab active" data-view="today">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+    <span>Aujourd'hui</span>
+  </button>
+  <button class="tab" data-view="plan">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h11l3 3v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+    <span>Plan</span>
+  </button>
+  <button class="tab" data-view="ppg">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M4 9l3-3 3 3-3 3-3-3zM14 19l3-3 3 3-3 3-3-3z"/></svg>
+    <span>PPG</span>
+  </button>
+  <button class="tab" data-view="settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    <span>Réglages</span>
+  </button>
+</div>
+
+<script>
+const PLAN = {"blocks":[{"id":"reprise","title":"Reprise","subtitle":"Reconnexion au volume","dateRange":"24 → 31 août 2026","theme":"transition","weeks":[{"label":"Semaine de reprise","dateRange":"24-31 août","volume":"~33-35km (3 sorties)","days":[{"date":"2026-08-24","label":"Lundi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-08-25","label":"Mardi","text":"Footing facile 10km","hasPPG":true,"tag":"easy"},{"date":"2026-08-26","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-08-27","label":"Jeudi","text":"Footing facile 9km","hasPPG":false,"tag":"easy"},{"date":"2026-08-28","label":"Vendredi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-08-29","label":"Samedi","text":"Sortie longue 14-16km, facile","hasPPG":false,"tag":"long"},{"date":"2026-08-30","label":"Dimanche","text":"Repos","hasPPG":false,"tag":"rest"}]}]},{"id":"semi","title":"Bloc 1 — Semi-marathon","subtitle":"Boulogne-Billancourt, objectif 1h35","dateRange":"1 sept → 15 nov 2026","theme":"marathon","weeks":[{"label":"Semaine 1 — Fondation","dateRange":"1-6 sept","volume":"","days":[{"date":"2026-08-31","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-09-01","label":"Mardi","text":"15' EF + 6x400m A5 (r90\") + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-09-02","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-03","label":"Jeudi","text":"15' EF + 20' continu AS (4'30/km) + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-09-04","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-05","label":"Samedi","text":"40' EF","hasPPG":false,"tag":"easy"},{"date":"2026-09-06","label":"Dimanche","text":"12km : 8km EF + 3x5' AS (r2')","hasPPG":false,"tag":"quality"}]},{"label":"Semaine 2 — Fondation","dateRange":"8-13 sept","volume":"","days":[{"date":"2026-09-07","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-09-08","label":"Mardi","text":"15' EF + 8x400m A5 (r90\") + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-09-09","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-10","label":"Jeudi","text":"15' EF + 25' continu AS + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-09-11","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-12","label":"Samedi","text":"45' EF","hasPPG":false,"tag":"easy"},{"date":"2026-09-13","label":"Dimanche","text":"13km : 8km EF + 4x5' AS (r2')","hasPPG":false,"tag":"quality"}]},{"label":"Semaine 3 — Fondation, pic du bloc","dateRange":"15-20 sept","volume":"","days":[{"date":"2026-09-14","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-09-15","label":"Mardi","text":"15' EF + 6x600m A5 (r2') + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-09-16","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-17","label":"Jeudi","text":"15' EF + 30' continu AS + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-09-18","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-19","label":"Samedi","text":"45' EF","hasPPG":false,"tag":"easy"},{"date":"2026-09-20","label":"Dimanche","text":"14km : 7km EF + 20' AS continu","hasPPG":false,"tag":"quality"}]},{"label":"Semaine 4 — Récupération","dateRange":"22-27 sept","volume":"","days":[{"date":"2026-09-21","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-09-22","label":"Mardi","text":"15' EF + 5x400m A10 facile (r2') + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-09-23","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-24","label":"Jeudi","text":"20' EF, focus technique de course","hasPPG":true,"tag":"easy"},{"date":"2026-09-25","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-09-26","label":"Samedi","text":"30' EF","hasPPG":false,"tag":"easy"},{"date":"2026-09-27","label":"Dimanche","text":"10km EF cool","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 5 — Seuil","dateRange":"29 sept-4 oct","volume":"","days":[{"date":"2026-09-28","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-09-29","label":"Mardi","text":"20' EF + 5x1000m A10 (r2') + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-09-30","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-01","label":"Jeudi","text":"15' EF + 25' continu AS + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-10-02","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-03","label":"Samedi","text":"50' EF","hasPPG":false,"tag":"easy"},{"date":"2026-10-04","label":"Dimanche","text":"15km : 10km EF + 5km AS finale","hasPPG":false,"tag":"quality"}]},{"label":"Semaine 6 — Checkpoint","dateRange":"6-11 oct","volume":"","days":[{"date":"2026-10-05","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-10-06","label":"Mardi","text":"20' EF + 6x1000m A10 (r2') + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-10-07","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-08","label":"Jeudi","text":"15' EF + 30' continu AS/A10 + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-10-09","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-10","label":"Samedi","text":"50' EF","hasPPG":false,"tag":"easy"},{"date":"2026-10-11","label":"Dimanche","text":"Test 16km : 8km EF + 8km à allure objectif (4'30/km)","hasPPG":false,"tag":"quality"}]},{"label":"Semaine 7 — Seuil","dateRange":"13-18 oct","volume":"","days":[{"date":"2026-10-12","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-10-13","label":"Mardi","text":"20' EF + 5x1200m A10 (r2') + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-10-14","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-15","label":"Jeudi","text":"10' EF + 2x15' AS (r3') + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-10-16","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-17","label":"Samedi","text":"50' EF","hasPPG":false,"tag":"easy"},{"date":"2026-10-18","label":"Dimanche","text":"17km : 11km EF + 6km AS","hasPPG":false,"tag":"long"}]},{"label":"Semaine 8 — Récupération","dateRange":"20-25 oct","volume":"","days":[{"date":"2026-10-19","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-10-20","label":"Mardi","text":"15' EF + 5x600m facile (r2') + 10' EF","hasPPG":false,"tag":"easy"},{"date":"2026-10-21","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-22","label":"Jeudi","text":"20' EF","hasPPG":true,"tag":"easy"},{"date":"2026-10-23","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-24","label":"Samedi","text":"40' EF","hasPPG":false,"tag":"easy"},{"date":"2026-10-25","label":"Dimanche","text":"12km EF","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 9 — Spécifique, pic sortie longue","dateRange":"27 oct-1 nov","volume":"","days":[{"date":"2026-10-26","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-10-27","label":"Mardi","text":"20' EF + 4x1500m A10/AS (r2') + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-10-28","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-29","label":"Jeudi","text":"15' EF + 3x10' AS (r2') + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-10-30","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-10-31","label":"Samedi","text":"50' EF","hasPPG":false,"tag":"easy"},{"date":"2026-11-01","label":"Dimanche","text":"18-19km : 10km EF + 8-9km AS (sortie longue de référence)","hasPPG":false,"tag":"quality"}]},{"label":"Semaine 10 — Début affûtage","dateRange":"3-8 nov","volume":"","days":[{"date":"2026-11-02","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-11-03","label":"Mardi","text":"15' EF + 5x1000m A10 (r2') + 10' EF","hasPPG":false,"tag":"quality"},{"date":"2026-11-04","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-11-05","label":"Jeudi","text":"10' EF + 20' AS + 10' EF","hasPPG":true,"tag":"quality"},{"date":"2026-11-06","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-11-07","label":"Samedi","text":"40' EF","hasPPG":false,"tag":"easy"},{"date":"2026-11-08","label":"Dimanche","text":"14km : 9km EF + 5km AS","hasPPG":false,"tag":"long"}]},{"label":"Semaine 11 — Semaine de course","dateRange":"10-15 nov","volume":"","days":[{"date":"2026-11-09","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-11-10","label":"Mardi","text":"15' EF + 4x500m A5 rapide (r2') + 5' EF","hasPPG":false,"tag":"quality"},{"date":"2026-11-11","label":"Mercredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-11-12","label":"Jeudi","text":"15' EF léger + 4x100m accélérations","hasPPG":true,"tag":"easy"},{"date":"2026-11-13","label":"Vendredi","text":"Repos, jambes fraîches — pas de PPG cette semaine","hasPPG":false,"tag":"rest"},{"date":"2026-11-14","label":"Samedi","text":"15-20' EF très léger + 3-4 accélérations","hasPPG":false,"tag":"easy"},{"date":"2026-11-15","label":"Dimanche","text":"SEMI DE BOULOGNE-BILLANCOURT — objectif 1h35 (plan B 1h40-1h42)","hasPPG":false,"tag":"easy"}]}]},{"id":"bloc3","title":"Bloc 3 — Base marathon","subtitle":"Base marathon","dateRange":"15 déc 2026 → 15 fév 2027","theme":"marathon","weeks":[{"label":"Semaine 1","dateRange":"15-21 déc","volume":"~42km","days":[{"date":"2026-12-15","label":"Lundi","text":"Repos ou mobilité","hasPPG":true,"tag":"rest"},{"date":"2026-12-16","label":"Mardi","text":"Footing très facile 6km","hasPPG":false,"tag":"easy"},{"date":"2026-12-17","label":"Mercredi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2026-12-18","label":"Jeudi","text":"Fartlek léger 8km (8x1min rapide à 4'00-4'10/km / 2min facile à 5'30-6'00/km)","hasPPG":true,"tag":"quality"},{"date":"2026-12-19","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-12-20","label":"Samedi","text":"Sortie longue 14km, facile","hasPPG":false,"tag":"long"},{"date":"2026-12-21","label":"Dimanche","text":"Récupération 6km très facile","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 2","dateRange":"22-28 déc","volume":"~44km","days":[{"date":"2026-12-22","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-12-23","label":"Mardi","text":"Footing facile 6km","hasPPG":false,"tag":"easy"},{"date":"2026-12-24","label":"Mercredi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2026-12-25","label":"Jeudi","text":"Côtes courtes 8x30s, effort équivalent plat ~3'50-4'00/km (~8km)","hasPPG":true,"tag":"quality"},{"date":"2026-12-26","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2026-12-27","label":"Samedi","text":"Sortie longue 16km, facile","hasPPG":false,"tag":"long"},{"date":"2026-12-28","label":"Dimanche","text":"Récupération 6km","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 3","dateRange":"29 déc-4 jan","volume":"~50km","days":[{"date":"2026-12-29","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2026-12-30","label":"Mardi","text":"Footing facile 7km","hasPPG":false,"tag":"easy"},{"date":"2026-12-31","label":"Mercredi","text":"Footing facile 10km","hasPPG":false,"tag":"easy"},{"date":"2027-01-01","label":"Jeudi","text":"Côtes courtes 10x30s, effort équivalent plat ~3'50-4'00/km (~9km)","hasPPG":true,"tag":"quality"},{"date":"2027-01-02","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-01-03","label":"Samedi","text":"Sortie longue 18km, facile","hasPPG":false,"tag":"long"},{"date":"2027-01-04","label":"Dimanche","text":"Récupération 6km","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 4 — décharge","dateRange":"5-11 jan","volume":"~36km","days":[{"date":"2027-01-05","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-01-06","label":"Mardi","text":"Footing facile 6km","hasPPG":false,"tag":"easy"},{"date":"2027-01-07","label":"Mercredi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2027-01-08","label":"Jeudi","text":"Footing facile 6km, aucune intensité","hasPPG":true,"tag":"easy"},{"date":"2027-01-09","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-01-10","label":"Samedi","text":"Sortie longue 16km, facile","hasPPG":false,"tag":"long"},{"date":"2027-01-11","label":"Dimanche","text":"Repos complet ou marche","hasPPG":false,"tag":"rest"}]},{"label":"Semaine 5","dateRange":"12-18 jan","volume":"~55km","days":[{"date":"2027-01-12","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-01-13","label":"Mardi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2027-01-14","label":"Mercredi","text":"Footing facile 10km","hasPPG":false,"tag":"easy"},{"date":"2027-01-15","label":"Jeudi","text":"Fartlek 10x1min rapide à 4'00-4'10/km / 2min facile à 5'30-6'00/km (~10km)","hasPPG":true,"tag":"quality"},{"date":"2027-01-16","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-01-17","label":"Samedi","text":"Sortie longue 20km, facile","hasPPG":false,"tag":"long"},{"date":"2027-01-18","label":"Dimanche","text":"Récupération 7km","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 6","dateRange":"19-25 jan","volume":"~58km","days":[{"date":"2027-01-19","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-01-20","label":"Mardi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2027-01-21","label":"Mercredi","text":"Footing facile 10km","hasPPG":false,"tag":"easy"},{"date":"2027-01-22","label":"Jeudi","text":"Côtes moyennes 6x1min, effort équivalent plat 4'00-4'10/km (~10km)","hasPPG":true,"tag":"quality"},{"date":"2027-01-23","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-01-24","label":"Samedi","text":"Sortie longue 22km, facile","hasPPG":false,"tag":"long"},{"date":"2027-01-25","label":"Dimanche","text":"Récupération 8km","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 7","dateRange":"26 jan-1 fév","volume":"~61km","days":[{"date":"2027-01-26","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-01-27","label":"Mardi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2027-01-28","label":"Mercredi","text":"Footing facile 11km","hasPPG":false,"tag":"easy"},{"date":"2027-01-29","label":"Jeudi","text":"Seuil 2x10min à 4'20-4'25/km, récup 3min trot (~10km au total séance)","hasPPG":true,"tag":"quality"},{"date":"2027-01-30","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-01-31","label":"Samedi","text":"Sortie longue 24km, facile","hasPPG":false,"tag":"long"},{"date":"2027-02-01","label":"Dimanche","text":"Récupération 8km","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 8 — décharge","dateRange":"2-8 fév","volume":"~42km","days":[{"date":"2027-02-02","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-02-03","label":"Mardi","text":"Footing facile 7km","hasPPG":false,"tag":"easy"},{"date":"2027-02-04","label":"Mercredi","text":"Footing facile 10km","hasPPG":false,"tag":"easy"},{"date":"2027-02-05","label":"Jeudi","text":"Footing facile 7km, aucune intensité","hasPPG":true,"tag":"easy"},{"date":"2027-02-06","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-02-07","label":"Samedi","text":"Sortie longue 18km, facile","hasPPG":false,"tag":"long"},{"date":"2027-02-08","label":"Dimanche","text":"Repos ou marche","hasPPG":false,"tag":"rest"}]},{"label":"Semaine 9 — test allure","dateRange":"9-15 fév","volume":"~72km","days":[{"date":"2027-02-09","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-02-10","label":"Mardi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2027-02-11","label":"Mercredi","text":"Footing facile 10km","hasPPG":false,"tag":"easy"},{"date":"2027-02-12","label":"Jeudi","text":"Footing facile 8km avec quelques accélérations","hasPPG":true,"tag":"easy"},{"date":"2027-02-13","label":"Vendredi","text":"Repos, jambes fraîches","hasPPG":false,"tag":"rest"},{"date":"2027-02-14","label":"Samedi","text":"Test allure — 10km (~4'15-4'20/km) ou semi (~4'25-4'30/km), pour recalibrer le 4'44/km","hasPPG":false,"tag":"quality"},{"date":"2027-02-15","label":"Dimanche","text":"Sortie longue 26km facile (si test = 10km) ou récup légère (si test = semi)","hasPPG":false,"tag":"long"}]}]},{"id":"bloc4","title":"Bloc 4 — Spécifique marathon","subtitle":"Spécifique marathon","dateRange":"16 fév → 4 avril 2027","theme":"marathon","weeks":[{"label":"Semaine 1","dateRange":"16-22 fév","volume":"~62km","days":[{"date":"2027-02-16","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-02-17","label":"Mardi","text":"Seuil 2x15min (allure ~4'20/km, récup 3min trot)","hasPPG":false,"tag":"quality"},{"date":"2027-02-18","label":"Mercredi","text":"Footing facile 12km","hasPPG":false,"tag":"easy"},{"date":"2027-02-19","label":"Jeudi","text":"Footing facile 10km","hasPPG":true,"tag":"easy"},{"date":"2027-02-20","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-02-21","label":"Samedi","text":"Sortie longue 26km facile + 2x3km à allure MA (4'44/km) en fin de sortie","hasPPG":false,"tag":"quality"},{"date":"2027-02-22","label":"Dimanche","text":"Récupération 8km facile","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 2","dateRange":"23 fév-1 mar","volume":"~76km","days":[{"date":"2027-02-23","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-02-24","label":"Mardi","text":"Seuil 2x20min à 4'20-4'25/km, récup 3min trot","hasPPG":false,"tag":"quality"},{"date":"2027-02-25","label":"Mercredi","text":"Footing facile 12km","hasPPG":false,"tag":"easy"},{"date":"2027-02-26","label":"Jeudi","text":"Footing facile 10km","hasPPG":true,"tag":"easy"},{"date":"2027-02-27","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-02-28","label":"Samedi","text":"Sortie longue 28km avec 3x6km à allure MA (4'44/km)","hasPPG":false,"tag":"quality"},{"date":"2027-03-01","label":"Dimanche","text":"Récupération 8km facile","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 3 — pic 1","dateRange":"2-8 mar","volume":"~84km","days":[{"date":"2027-03-02","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-03-03","label":"Mardi","text":"Seuil 3x15min à 4'20-4'25/km, récup 3min trot","hasPPG":false,"tag":"quality"},{"date":"2027-03-04","label":"Mercredi","text":"Footing facile 13km","hasPPG":false,"tag":"easy"},{"date":"2027-03-05","label":"Jeudi","text":"Footing facile 11km","hasPPG":true,"tag":"easy"},{"date":"2027-03-06","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-03-07","label":"Samedi","text":"Sortie longue 30km avec 3x7km à allure MA (4'44/km)","hasPPG":false,"tag":"quality"},{"date":"2027-03-08","label":"Dimanche","text":"Récupération 9km facile","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 4 — pic 2","dateRange":"9-15 mar","volume":"~89km","days":[{"date":"2027-03-09","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-03-10","label":"Mardi","text":"Fractionné court 10x400m à 3'45-3'55/km (récup 1min trot/marche)","hasPPG":false,"tag":"quality"},{"date":"2027-03-11","label":"Mercredi","text":"Footing facile 13km","hasPPG":false,"tag":"easy"},{"date":"2027-03-12","label":"Jeudi","text":"Footing facile 11km","hasPPG":true,"tag":"easy"},{"date":"2027-03-13","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-03-14","label":"Samedi","text":"Sortie longue 32km avec 3x8km à allure MA (4'44/km)","hasPPG":false,"tag":"quality"},{"date":"2027-03-15","label":"Dimanche","text":"Récupération 9km facile","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 5 — décharge + course test","dateRange":"16-22 mar","volume":"~65km","days":[{"date":"2027-03-16","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-03-17","label":"Mardi","text":"Footing facile 8km","hasPPG":false,"tag":"easy"},{"date":"2027-03-18","label":"Mercredi","text":"Course test — semi (~4'25-4'30/km) ou 25km (~4'20-4'25/km) à allure proche seuil","hasPPG":false,"tag":"quality"},{"date":"2027-03-19","label":"Jeudi","text":"Récupération très facile 6km","hasPPG":true,"tag":"easy"},{"date":"2027-03-20","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-03-21","label":"Samedi","text":"Sortie longue réduite 18km facile","hasPPG":false,"tag":"long"},{"date":"2027-03-22","label":"Dimanche","text":"Footing facile 8km","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 6","dateRange":"23-29 mar","volume":"~80km","days":[{"date":"2027-03-23","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-03-24","label":"Mardi","text":"Seuil 2x20min à 4'20-4'25/km, récup 3min trot","hasPPG":false,"tag":"quality"},{"date":"2027-03-25","label":"Mercredi","text":"Footing facile 12km","hasPPG":false,"tag":"easy"},{"date":"2027-03-26","label":"Jeudi","text":"Footing facile 10km","hasPPG":true,"tag":"easy"},{"date":"2027-03-27","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-03-28","label":"Samedi","text":"Sortie longue 26km avec 3x8km à allure MA (4'44/km)","hasPPG":false,"tag":"quality"},{"date":"2027-03-29","label":"Dimanche","text":"Récupération 8km facile","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 7 — transition affûtage","dateRange":"30 mar-4 avril","volume":"~58km","days":[{"date":"2027-03-30","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-03-31","label":"Mardi","text":"Fractionné court léger 6x400m à 3'50-4'00/km, récup 1min30","hasPPG":false,"tag":"quality"},{"date":"2027-04-01","label":"Mercredi","text":"Footing facile 10km","hasPPG":false,"tag":"easy"},{"date":"2027-04-02","label":"Jeudi","text":"Footing facile 8km","hasPPG":true,"tag":"easy"},{"date":"2027-04-03","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-04-04","label":"Samedi","text":"Sortie longue 22km avec 2x6km à allure MA (4'44/km)","hasPPG":false,"tag":"quality"},{"date":"2027-04-05","label":"Dimanche","text":"Récupération 6km facile","hasPPG":false,"tag":"easy"}]}]},{"id":"bloc5","title":"Bloc 5 — Affûtage marathon","subtitle":"Affûtage marathon","dateRange":"5 → 11 avril 2027","theme":"marathon","weeks":[{"label":"Semaine d'affûtage","dateRange":"5-11 avril","volume":"","days":[{"date":"2027-04-05","label":"Lundi (J-6)","text":"Footing 40min facile","hasPPG":false,"tag":"easy"},{"date":"2027-04-06","label":"Mardi (J-5)","text":"3x2km à allure MA (4'44/km), récup 3min trot","hasPPG":true,"tag":"quality"},{"date":"2027-04-07","label":"Mercredi (J-4)","text":"Repos ou 20min très facile","hasPPG":false,"tag":"rest"},{"date":"2027-04-08","label":"Jeudi (J-3)","text":"Footing 30min + 4x100m accélérations progressives","hasPPG":false,"tag":"easy"},{"date":"2027-04-09","label":"Vendredi (J-2)","text":"Repos complet, stock glucides — pas de PPG cette semaine","hasPPG":true,"tag":"rest"},{"date":"2027-04-10","label":"Samedi (J-1)","text":"15-20min très facile, préparation matériel/ravito","hasPPG":false,"tag":"easy"},{"date":"2027-04-11","label":"Dimanche","text":"MARATHON DE PARIS — objectif 3h20","hasPPG":false,"tag":"race"}]}]},{"id":"bloc6","title":"Bloc 6 — Récupération post-marathon","subtitle":"Récupération","dateRange":"12 → 25 avril 2027","theme":"transition","weeks":[{"label":"Semaine 1","dateRange":"12-18 avril","volume":"","days":[{"date":"2027-04-12","label":"Lundi","text":"Marche, vélo très doux, mobilité, pas de course à pied","hasPPG":false,"tag":"easy"},{"date":"2027-04-13","label":"Mardi","text":"Marche, vélo très doux, mobilité","hasPPG":true,"tag":"easy"},{"date":"2027-04-14","label":"Mercredi","text":"Marche, vélo très doux, mobilité, pas de course à pied","hasPPG":false,"tag":"easy"},{"date":"2027-04-15","label":"Jeudi","text":"Si aucune douleur/gonflement, footing 20min très facile","hasPPG":false,"tag":"easy"},{"date":"2027-04-16","label":"Vendredi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-04-17","label":"Samedi","text":"Marche longue ou vélo doux","hasPPG":false,"tag":"easy"},{"date":"2027-04-18","label":"Dimanche","text":"Footing 20min très facile si tout va bien","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 2","dateRange":"19-25 avril","volume":"","days":[{"date":"2027-04-19","label":"Lundi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-04-20","label":"Mardi","text":"Footing facile 25min","hasPPG":true,"tag":"easy"},{"date":"2027-04-21","label":"Mercredi","text":"Repos ou mobilité","hasPPG":false,"tag":"rest"},{"date":"2027-04-22","label":"Jeudi","text":"Footing facile 30min","hasPPG":false,"tag":"easy"},{"date":"2027-04-23","label":"Vendredi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-04-24","label":"Samedi","text":"Footing facile 35min","hasPPG":false,"tag":"easy"},{"date":"2027-04-25","label":"Dimanche","text":"Repos","hasPPG":false,"tag":"rest"}]}]},{"id":"bloc7","title":"Bloc 7 — Bascule vers le trail","subtitle":"Bascule trail","dateRange":"26 avril → 24 mai 2027","theme":"trail","weeks":[{"label":"Semaine 1","dateRange":"26 avril-2 mai","volume":"D+ 300-400m","days":[{"date":"2027-04-26","label":"Lundi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-04-27","label":"Mardi","text":"Footing vallonné facile 45min (Montmartre)","hasPPG":true,"tag":"easy"},{"date":"2027-04-28","label":"Mercredi","text":"Footing facile plat 30min (Bois de Boulogne)","hasPPG":false,"tag":"easy"},{"date":"2027-04-29","label":"Jeudi","text":"Repos ou mobilité","hasPPG":false,"tag":"rest"},{"date":"2027-04-30","label":"Vendredi","text":"Footing facile plat 40min (Bois de Boulogne)","hasPPG":true,"tag":"easy"},{"date":"2027-05-01","label":"Samedi","text":"Sortie vallonnée 1h30-2h, D+300-400m (Forêt de Meudon/Fausses-Reposes)","hasPPG":false,"tag":"easy"},{"date":"2027-05-02","label":"Dimanche","text":"Footing facile 45min (Bois de Boulogne)","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 2","dateRange":"3-9 mai","volume":"D+ 500-600m","days":[{"date":"2027-05-03","label":"Lundi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-05-04","label":"Mardi","text":"Sortie vallonnée avec travail descente technique, 1h (Montmartre)","hasPPG":true,"tag":"easy"},{"date":"2027-05-05","label":"Mercredi","text":"Footing facile 40min (Bois de Boulogne)","hasPPG":false,"tag":"easy"},{"date":"2027-05-06","label":"Jeudi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-05-07","label":"Vendredi","text":"Footing facile 40min (Bois de Boulogne)","hasPPG":true,"tag":"easy"},{"date":"2027-05-08","label":"Samedi","text":"Sortie longue 2h30-3h, D+500-600m, aller-retour Saint-Cloud/Meudon + boucles répétées","hasPPG":false,"tag":"long"},{"date":"2027-05-09","label":"Dimanche","text":"Footing facile 45min (Bois de Boulogne)","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 3","dateRange":"10-16 mai","volume":"D+ 700-800m","days":[{"date":"2027-05-10","label":"Lundi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-05-11","label":"Mardi","text":"Sortie vallonnée 1h avec descente (Montmartre)","hasPPG":true,"tag":"easy"},{"date":"2027-05-12","label":"Mercredi","text":"Footing facile 40min","hasPPG":false,"tag":"easy"},{"date":"2027-05-13","label":"Jeudi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-05-14","label":"Vendredi","text":"Footing facile 40min","hasPPG":true,"tag":"easy"},{"date":"2027-05-15","label":"Samedi","text":"Sortie longue 3h-3h30, D+700-800m, Meudon/Fausses-Reposes + boucles répétées","hasPPG":false,"tag":"long"},{"date":"2027-05-16","label":"Dimanche","text":"Footing facile récup 45min","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 4","dateRange":"17-24 mai","volume":"D+ 900-1000m","days":[{"date":"2027-05-17","label":"Lundi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-05-18","label":"Mardi","text":"Sortie vallonnée 1h (Montmartre)","hasPPG":true,"tag":"easy"},{"date":"2027-05-19","label":"Mercredi","text":"Footing facile 40min","hasPPG":false,"tag":"easy"},{"date":"2027-05-20","label":"Jeudi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-05-21","label":"Vendredi","text":"Footing facile 40min","hasPPG":true,"tag":"easy"},{"date":"2027-05-22","label":"Samedi","text":"Sortie longue avec sac léger, 3h30-4h, D+900-1000m, Meudon/Fausses-Reposes + boucles répétées, marche/trot alterné en montée","hasPPG":false,"tag":"long"},{"date":"2027-05-23","label":"Dimanche","text":"Footing facile récup 45min","hasPPG":false,"tag":"easy"}]}]},{"id":"bloc8","title":"Bloc 8 — Construction ultra","subtitle":"Construction ultra","dateRange":"25 mai → 21 juin 2027","theme":"trail","weeks":[{"label":"Semaine 1","dateRange":"25-31 mai","volume":"SL 3h / D+800m","days":[{"date":"2027-05-25","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-05-26","label":"Mardi","text":"Footing vallonné 1h (Montmartre)","hasPPG":false,"tag":"easy"},{"date":"2027-05-27","label":"Mercredi","text":"Footing facile 45min","hasPPG":false,"tag":"easy"},{"date":"2027-05-28","label":"Jeudi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-05-29","label":"Vendredi","text":"Footing facile 45min","hasPPG":false,"tag":"easy"},{"date":"2027-05-30","label":"Samedi","text":"Sortie longue 3h, D+800m, Meudon/Fausses-Reposes + boucles répétées, allure marche en côte","hasPPG":false,"tag":"quality"},{"date":"2027-05-31","label":"Dimanche","text":"Sortie récup montagne 1h-1h30, D+ modéré","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 2","dateRange":"1-7 juin","volume":"SL 4h / D+1200m","days":[{"date":"2027-06-01","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-06-02","label":"Mardi","text":"Footing vallonné 1h (Montmartre)","hasPPG":false,"tag":"easy"},{"date":"2027-06-03","label":"Mercredi","text":"Footing facile 45min","hasPPG":false,"tag":"easy"},{"date":"2027-06-04","label":"Jeudi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-06-05","label":"Vendredi","text":"Footing facile 45min, jambes fraîches avant Sancerre","hasPPG":false,"tag":"easy"},{"date":"2027-06-06","label":"Samedi","text":"Sortie longue 4h, D+1200m, avec sac de course complet (portage réel)","hasPPG":false,"tag":"long"},{"date":"2027-06-07","label":"Dimanche","text":"Sortie récup 1h30, D+ modéré","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 3 — TRAIL DE SANCERRE","dateRange":"8-14 juin","volume":"35km/800m D+","days":[{"date":"2027-06-08","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-06-09","label":"Mardi","text":"Footing facile 40min, aucune intensité","hasPPG":false,"tag":"easy"},{"date":"2027-06-10","label":"Mercredi","text":"Footing très facile 30min","hasPPG":false,"tag":"easy"},{"date":"2027-06-11","label":"Jeudi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-06-12","label":"Vendredi","text":"Repos ou 20min très facile, stock glucides, préparation matériel/ravito, trajet vers Sancerre — pas de PPG cette semaine","hasPPG":false,"tag":"rest"},{"date":"2027-06-13","label":"Samedi","text":"Trail de Sancerre, 35km/800m D+ — couru comme course d'entraînement intense","hasPPG":false,"tag":"race"},{"date":"2027-06-14","label":"Dimanche","text":"Récupération très facile 30-45min ou repos complet selon fatigue","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 4","dateRange":"15-21 juin","volume":"SL 6h / D+2000m","days":[{"date":"2027-06-15","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-06-16","label":"Mardi","text":"Footing vallonné 1h (Montmartre)","hasPPG":false,"tag":"easy"},{"date":"2027-06-17","label":"Mercredi","text":"Footing facile 45min","hasPPG":false,"tag":"easy"},{"date":"2027-06-18","label":"Jeudi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-06-19","label":"Vendredi","text":"Footing facile 30min, jambes fraîches avant le weekend choc à venir","hasPPG":false,"tag":"easy"},{"date":"2027-06-20","label":"Samedi","text":"Sortie longue 6h, D+2000m, nombreuses boucles répétées Saint-Cloud + Meudon, simulation allure d'ultra + technique bâtons","hasPPG":false,"tag":"long"},{"date":"2027-06-21","label":"Dimanche","text":"Sortie récup 2h, D+ modéré, nutrition solide testée","hasPPG":false,"tag":"easy"}]}]},{"id":"bloc9","title":"Bloc 9 — Spécifique Beaufortain","subtitle":"Spécifique Beaufortain","dateRange":"22 juin → 5 juillet 2027","theme":"trail","weeks":[{"label":"Semaine 1 — Weekend choc n°1","dateRange":"22-28 juin","volume":"","days":[{"date":"2027-06-22","label":"Lundi","text":"Repos complet","hasPPG":true,"tag":"rest"},{"date":"2027-06-23","label":"Mardi","text":"Footing facile 1h","hasPPG":false,"tag":"easy"},{"date":"2027-06-24","label":"Mercredi","text":"Sortie nocturne avec frontale, 1h30-2h, gestion technique + fatigue","hasPPG":false,"tag":"long"},{"date":"2027-06-25","label":"Jeudi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-06-26","label":"Vendredi","text":"Footing facile 45min, jambes fraîches","hasPPG":false,"tag":"easy"},{"date":"2027-06-27","label":"Samedi (J1)","text":"5-6h, D+1500m, boucles répétées Meudon/Fausses-Reposes + Saint-Cloud","hasPPG":false,"tag":"easy"},{"date":"2027-06-28","label":"Dimanche (J2)","text":"3-4h, D+800m, jambes fatiguées de la veille","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 2 — Weekend choc n°2","dateRange":"29 juin-5 juillet","volume":"","days":[{"date":"2027-06-29","label":"Lundi","text":"Repos complet","hasPPG":true,"tag":"rest"},{"date":"2027-06-30","label":"Mardi","text":"Footing facile 1h","hasPPG":false,"tag":"easy"},{"date":"2027-07-01","label":"Mercredi","text":"Test complet nutrition/matériel obligatoire (vérifier règlement course)","hasPPG":false,"tag":"easy"},{"date":"2027-07-02","label":"Jeudi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-07-03","label":"Vendredi","text":"Footing facile 45min","hasPPG":false,"tag":"easy"},{"date":"2027-07-04","label":"Samedi (J1)","text":"6-7h, D+1800m, boucles répétées Meudon/Fausses-Reposes + Saint-Cloud","hasPPG":false,"tag":"easy"},{"date":"2027-07-05","label":"Dimanche (J2)","text":"4-5h, D+1000m, jambes fatiguées de la veille","hasPPG":false,"tag":"easy"}]}]},{"id":"bloc10","title":"Bloc 10 — Affûtage trail","subtitle":"Affûtage trail","dateRange":"6 → 19 juillet 2027","theme":"trail","weeks":[{"label":"Semaine 1 — volume -30%","dateRange":"6-12 juillet","volume":"","days":[{"date":"2027-07-06","label":"Lundi","text":"Repos","hasPPG":true,"tag":"rest"},{"date":"2027-07-07","label":"Mardi","text":"Footing facile 45min","hasPPG":false,"tag":"easy"},{"date":"2027-07-08","label":"Mercredi","text":"Repos ou mobilité","hasPPG":false,"tag":"rest"},{"date":"2027-07-09","label":"Jeudi","text":"Footing facile 45min avec un peu d'intensité courte","hasPPG":true,"tag":"easy"},{"date":"2027-07-10","label":"Vendredi","text":"Repos","hasPPG":false,"tag":"rest"},{"date":"2027-07-11","label":"Samedi","text":"Dernière sortie moyenne montagne, 2-3h, D+ modéré (J-8/J-9)","hasPPG":false,"tag":"easy"},{"date":"2027-07-12","label":"Dimanche","text":"Footing facile récup","hasPPG":false,"tag":"easy"}]},{"label":"Semaine 2 — volume -60%","dateRange":"13-19 juillet","volume":"","days":[{"date":"2027-07-12","label":"Lundi","text":"Footing très facile 30min","hasPPG":false,"tag":"easy"},{"date":"2027-07-13","label":"Mardi","text":"Repos, mobilité","hasPPG":true,"tag":"rest"},{"date":"2027-07-14","label":"Mercredi","text":"Footing très facile 20min, reconnaissance passages techniques si possible","hasPPG":false,"tag":"easy"},{"date":"2027-07-15","label":"Jeudi","text":"Repos, logistique ravitos/drop bags finalisée","hasPPG":false,"tag":"rest"},{"date":"2027-07-16","label":"Vendredi","text":"Repos complet, stock glucides — pas de PPG cette semaine","hasPPG":true,"tag":"rest"},{"date":"2027-07-17","label":"Samedi","text":"Trajet, installation, repos","hasPPG":false,"tag":"easy"},{"date":"2027-07-18","label":"Dimanche","text":"TRAIL DU BEAUFORTAIN, 110km / 7800m D+ — Jour 1","hasPPG":false,"tag":"race"},{"date":"2027-07-19","label":"Lundi","text":"TRAIL DU BEAUFORTAIN — Jour 2 (arrivée)","hasPPG":false,"tag":"race"}]}]}]};
+
+const STORAGE_KEY = 'beaufortain_progress_v1';
+function loadProgress(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; }
+}
+function saveProgress(p){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }catch(e){}
+}
+let progress = loadProgress();
+
+function dayId(bIdx, wIdx, dIdx){ return bIdx+'-'+wIdx+'-'+dIdx; }
+
+function todayISO(){
+  const d = new Date();
+  const off = d.getTimezoneOffset();
+  const local = new Date(d.getTime() - off*60000);
+  return local.toISOString().slice(0,10);
+}
+
+// Flatten all days with references
+const ALL_DAYS = [];
+PLAN.blocks.forEach((b, bIdx)=>{
+  b.weeks.forEach((w, wIdx)=>{
+    w.days.forEach((day, dIdx)=>{
+      ALL_DAYS.push({ b, bIdx, w, wIdx, day, dIdx, id: dayId(bIdx,wIdx,dIdx) });
+    });
+  });
+});
+const ACTIVE_DAYS = ALL_DAYS.filter(e => e.day.tag !== 'rest');
+
+function findTodayEntry(){
+  const t = todayISO();
+  let entry = ACTIVE_DAYS.find(e => e.day.date === t);
+  if(entry) return entry;
+  // find nearest upcoming active day
+  const future = ACTIVE_DAYS.filter(e => e.day.date > t);
+  if(future.length) return future[0];
+  return null;
+}
+
+function frDate(iso){
+  const months = ['jan.','fév.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+  const [y,m,dd] = iso.split('-').map(Number);
+  return dd + ' ' + months[m-1];
+}
+function shortDay(iso){
+  const d = new Date(iso+'T12:00:00');
+  const days = ['DIM','LUN','MAR','MER','JEU','VEN','SAM'];
+  return days[d.getDay()];
+}
+function dayNum(iso){ return iso.split('-')[2]; }
+
+function renderStats(){
+  const totalDays = ACTIVE_DAYS.length;
+  const doneDays = ACTIVE_DAYS.filter(e => progress[e.id]).length;
+  const pct = totalDays ? Math.round(doneDays/totalDays*100) : 0;
+
+  const t = todayISO();
+  function weeksUntil(iso){
+    const a = new Date(t+'T00:00:00'), b = new Date(iso+'T00:00:00');
+    const days = (b-a)/86400000;
+    return Math.round(days/7);
+  }
+  const semiEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('SEMI'));
+  const marathonEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('MARATHON DE PARIS'));
+  const beaufortainEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('BEAUFORTAIN') && e.day.text.includes('Jour 1'));
+
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-card"><b>${semiEntry?weeksUntil(semiEntry.day.date):'—'}sem</b><span>avant semi</span></div>
+    <div class="stat-card"><b>${marathonEntry?weeksUntil(marathonEntry.day.date):'—'}sem</b><span>avant marathon</span></div>
+    <div class="stat-card"><b>${beaufortainEntry?weeksUntil(beaufortainEntry.day.date):'—'}sem</b><span>avant beaufortain</span></div>
+  `;
+
+  // move today marker along route (0 -> 340 on x axis of svg viewBox 350)
+  const marker = document.getElementById('today-marker');
+  const x = 8 + (340-8) * (pct/100);
+  marker.setAttribute('cx', x.toFixed(1));
+}
+
+function ppgButtonHtml(){
+  return `<button class="ppg-btn" onclick="switchView('ppg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M4 9l3-3 3 3-3 3-3-3zM14 19l3-3 3 3-3 3-3-3z"/></svg>
+    Voir PPG
+  </button>`;
+}
+
+function renderToday(){
+  const entry = findTodayEntry();
+  const slot = document.getElementById('today-slot');
+  if(!entry){
+    slot.innerHTML = `<div class="no-session">Pas de séance programmée à cette date — hors période du plan.</div>`;
+    document.getElementById('upcoming-list').innerHTML = '';
+    return;
+  }
+  const isToday = entry.day.date === todayISO();
+  const done = !!progress[entry.id];
+  slot.innerHTML = `
+    <div class="today-card">
+      <div class="tag">${isToday ? "Aujourd'hui" : 'Prochaine séance'} · ${shortDay(entry.day.date).toLowerCase()}. ${frDate(entry.day.date)} · ${entry.b.title}</div>
+      <div class="main">
+        <div>
+          <div class="txt">${entry.day.text}</div>
+          <div class="sub">${entry.w.label}</div>
+        </div>
+        <button class="today-check ${done?'done':''}" onclick="toggleDay('${entry.id}')">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M3 9l4 4 8-8" stroke="#EFEDE2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      ${entry.day.hasPPG ? ppgButtonHtml() : ''}
+    </div>
+  `;
+
+  // upcoming list: next 6 active days after entry.date (or from today)
+  const t = todayISO();
+  const upcoming = ACTIVE_DAYS.filter(e => e.day.date > (isToday?t:entry.day.date)).slice(0,6);
+  document.getElementById('upcoming-list').innerHTML = upcoming.map(e => rowHtml(e)).join('');
+}
+
+function rowHtml(e){
+  const done = !!progress[e.id];
+  return `
+    <div class="row ${done?'done':''}">
+      <span class="date">${dayNum(e.day.date)}<b>${shortDay(e.day.date)}</b></span>
+      <span class="marker ${e.day.tag}"></span>
+      <span class="txt">${e.day.text}${e.day.hasPPG ? '<span class="ppgtag">+PPG</span>' : ''}</span>
+      <button class="check ${done?'done':''}" onclick="toggleDay('${e.id}')"></button>
+    </div>
+  `;
+}
+
+function toggleDay(id){
+  progress[id] = !progress[id];
+  if(!progress[id]) delete progress[id];
+  saveProgress(progress);
+  renderAll();
+}
+
+function blockProgress(b, bIdx){
+  let total=0, done=0;
+  b.weeks.forEach((w, wIdx)=>{
+    w.days.forEach((day, dIdx)=>{
+      if(day.tag === 'rest') return;
+      total++;
+      if(progress[dayId(bIdx,wIdx,dIdx)]) done++;
+    });
+  });
+  return {total, done, pct: total? Math.round(done/total*100):0};
+}
+
+function ringSvg(pct){
+  const r = 15, c = 2*Math.PI*r;
+  const off = c - (c*pct/100);
+  return `<svg class="block-bar" viewBox="0 0 36 36">
+    <circle cx="18" cy="18" r="${r}" fill="none" stroke="var(--card-line)" stroke-width="4"/>
+    <circle cx="18" cy="18" r="${r}" fill="none" stroke="var(--route)" stroke-width="4" stroke-dasharray="${c}" stroke-dashoffset="${off}" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+  </svg>`;
+}
+
+let openBlocks = {};
+let openWeeks = {};
+
+function renderPlan(){
+  const t = todayISO();
+  const container = document.getElementById('blocks-container');
+  container.innerHTML = PLAN.blocks.map((b, bIdx)=>{
+    const bp = blockProgress(b, bIdx);
+    const isOpen = openBlocks[bIdx];
+    const weeksHtml = b.weeks.map((w, wIdx)=>{
+      const isCurrentWeek = w.days.some(d => d.date === t) || (w.days[0].date <= t && t <= w.days[w.days.length-1].date);
+      const wOpen = openWeeks[bIdx+'-'+wIdx] !== undefined ? openWeeks[bIdx+'-'+wIdx] : isCurrentWeek;
+      const rows = w.days.filter(day => day.tag !== 'rest').map((day, dIdx)=> rowHtml({b,bIdx,w,wIdx,day,dIdx: w.days.indexOf(day),id:dayId(bIdx,wIdx,w.days.indexOf(day))})).join('');
+      return `
+        <div class="week ${wOpen?'open':''} ${isCurrentWeek?'current':''}" data-block="${bIdx}" data-week="${wIdx}">
+          <div class="week-head" onclick="toggleWeek(${bIdx},${wIdx})">
+            <span class="lbl">${w.label}${isCurrentWeek?' · en cours':''}</span>
+            <span class="vol">${w.volume||w.dateRange}</span>
+          </div>
+          <div class="week-body">${rows}</div>
+        </div>
+      `;
+    }).join('');
+    return `
+      <div class="block-wrap theme-${b.theme} ${isOpen?'open':''}" data-block="${bIdx}" id="block-${bIdx}">
+        <div class="block-head" onclick="toggleBlock(${bIdx})">
+          <div class="left">
+            <h2>${b.title}</h2>
+            <div class="dr">${b.dateRange}</div>
+          </div>
+          <div class="right">
+            <span class="pct">${bp.done}/${bp.total}</span>
+            ${ringSvg(bp.pct)}
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="block-body">${weeksHtml}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleBlock(bIdx){
+  openBlocks[bIdx] = !openBlocks[bIdx];
+  renderPlan();
+}
+function toggleWeek(bIdx, wIdx){
+  const key = bIdx+'-'+wIdx;
+  const wasOpen = document.querySelector(`.week[data-block="${bIdx}"][data-week="${wIdx}"]`).classList.contains('open');
+  openWeeks[key] = !wasOpen;
+  renderPlan();
+}
+
+function initCurrentBlockOpen(){
+  const t = todayISO();
+  const idx = PLAN.blocks.findIndex(b => b.weeks.some(w => w.days.some(d => d.date === t)) );
+  if(idx >= 0) openBlocks[idx] = true;
+  else {
+    // find nearest future block
+    const fut = PLAN.blocks.findIndex(b => b.weeks[0].days[0].date > t);
+    if(fut >= 0) openBlocks[fut] = true;
+  }
+}
+
+function switchView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  document.querySelectorAll('.tab').forEach(tb=>tb.classList.toggle('active', tb.dataset.view===name));
+  document.querySelector('main').scrollTop = 0;
+}
+
+document.querySelectorAll('.tab').forEach(tb=>{
+  tb.addEventListener('click', ()=> switchView(tb.dataset.view));
+});
+
+document.getElementById('reset-btn').addEventListener('click', ()=>{
+  if(confirm('Réinitialiser toute la progression ? Cette action est irréversible.')){
+    progress = {};
+    saveProgress(progress);
+    renderAll();
+  }
+});
+
+function renderAll(){
+  renderStats();
+  renderToday();
+  renderPlan();
+}
+
+initCurrentBlockOpen();
+renderAll();
+</script>
+</body>
+</html>
