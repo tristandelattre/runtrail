@@ -473,7 +473,7 @@ function renderStats(){
     const days = (b-a)/86400000;
     return Math.round(days/7);
   }
-  const semiEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('SEMI'));
+  const semiEntry = ACTIVE_DAYS.find(e => e.day.text.includes('SEMI'));
   const marathonEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('MARATHON DE PARIS'));
   const beaufortainEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('BEAUFORTAIN') && e.day.text.includes('Jour 1'));
 
