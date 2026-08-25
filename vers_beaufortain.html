@@ -8,6 +8,25 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="RunTrail">
 <meta name="theme-color" content="#EFEDE2">
+<script>
+  (function(){
+    function setAppHeight(){
+      var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+      document.documentElement.style.setProperty('--app-height', h + 'px');
+    }
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight);
+    window.addEventListener('orientationchange', setAppHeight);
+    if(window.visualViewport){
+      window.visualViewport.addEventListener('resize', setAppHeight);
+    }
+    // iOS standalone home-screen apps can report the wrong viewport height
+    // at first paint and only settle to the correct value a moment later.
+    setTimeout(setAppHeight, 50);
+    setTimeout(setAppHeight, 300);
+    setTimeout(setAppHeight, 1000);
+  })();
+</script>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -35,7 +54,8 @@
   *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
   html,body{margin:0;height:100%;background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);overscroll-behavior:none;overflow:hidden;}
   body{
-    position:fixed;inset:0;width:100%;
+    position:fixed;top:0;left:0;width:100%;
+    height:var(--app-height, 100dvh);
     display:flex;flex-direction:column;
     background-image:
       radial-gradient(circle at 12% 6%, transparent 0, transparent 40px, var(--contour-soft) 41px, transparent 42px),
