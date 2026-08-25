@@ -51,7 +51,7 @@
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--route);margin:0 0 4px;}
   h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;margin:0;letter-spacing:-.01em;}
 
-  main{flex:1;overflow-y:auto;padding:0 18px calc(86px + var(--safe-bottom));-webkit-overflow-scrolling:touch;}
+  main{flex:1;min-height:0;overflow-y:auto;padding:0 18px 20px;-webkit-overflow-scrolling:touch;}
   main::-webkit-scrollbar{display:none;}
 
   .view{display:none;}
@@ -169,11 +169,11 @@
 
   /* --- tab bar --- */
   .tabbar{
-    position:fixed;bottom:0;left:0;right:0;
+    flex-shrink:0;
     padding:10px 0 max(10px, var(--safe-bottom));
     background:rgba(248,246,236,.92);backdrop-filter:blur(10px);
     border-top:1px solid var(--card-line);
-    display:flex;align-items:flex-start;z-index:40;
+    display:flex;align-items:flex-start;
   }
   .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;padding:0;cursor:pointer;}
   .tab svg{width:24px;height:24px;}
