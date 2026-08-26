@@ -442,6 +442,9 @@ const ACTIVE_DAYS = ALL_DAYS.filter(e => e.day.tag !== 'rest');
 
 function findTodayEntry(){
   const t = todayISO();
+  // an overdue, unchecked session takes priority over today's/future sessions
+  const overdue = ACTIVE_DAYS.find(e => e.day.date < t && !progress[e.id]);
+  if(overdue) return overdue;
   let entry = ACTIVE_DAYS.find(e => e.day.date === t);
   if(entry) return entry;
   // find nearest upcoming active day
@@ -504,11 +507,13 @@ function renderToday(){
     document.getElementById('upcoming-list').innerHTML = '';
     return;
   }
-  const isToday = entry.day.date === todayISO();
+  const t = todayISO();
+  const isToday = entry.day.date === t;
+  const isOverdue = entry.day.date < t;
   const done = !!progress[entry.id];
   slot.innerHTML = `
     <div class="today-card">
-      <div class="tag">${isToday ? "Aujourd'hui" : 'Prochaine séance'} · ${shortDay(entry.day.date).toLowerCase()}. ${frDate(entry.day.date)} · ${entry.b.title}</div>
+      <div class="tag">${isOverdue ? 'En retard' : (isToday ? "Aujourd'hui" : 'Prochaine séance')} · ${shortDay(entry.day.date).toLowerCase()}. ${frDate(entry.day.date)} · ${entry.b.title}</div>
       <div class="main">
         <div>
           <div class="txt">${entry.day.text}</div>
@@ -523,7 +528,6 @@ function renderToday(){
   `;
 
   // upcoming list: next 6 active days after entry.date (or from today)
-  const t = todayISO();
   const upcoming = ACTIVE_DAYS.filter(e => e.day.date > (isToday?t:entry.day.date)).slice(0,6);
   document.getElementById('upcoming-list').innerHTML = upcoming.map(e => rowHtml(e)).join('');
 }
