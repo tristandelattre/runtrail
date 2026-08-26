@@ -188,6 +188,23 @@
   .pace-row .pace-val{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);white-space:nowrap;}
   .btn-danger{width:100%;background:var(--route);color:var(--bg);border:none;border-radius:12px;padding:12px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
 
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--card-line);}
+  .toggle-row:first-child{border-top:none;padding-top:0;}
+  .toggle-row span{font-size:13px;color:var(--ink);}
+  .switch{position:relative;width:44px;height:26px;flex-shrink:0;display:inline-block;}
+  .switch input{opacity:0;width:0;height:0;position:absolute;}
+  .switch .slider{position:absolute;inset:0;background:var(--card-line);border-radius:14px;cursor:pointer;transition:background .15s;}
+  .switch .slider::before{content:'';position:absolute;left:3px;top:3px;width:20px;height:20px;background:var(--card);border-radius:50%;transition:transform .15s;box-shadow:0 1px 2px rgba(31,42,51,.2);}
+  .switch input:checked + .slider{background:var(--moss);}
+  .switch input:checked + .slider::before{transform:translateX(18px);}
+
+  .name-options{display:flex;flex-direction:column;gap:8px;}
+  .name-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--card-line);border-radius:12px;cursor:pointer;font-size:13px;color:var(--ink-soft);}
+  .name-opt.active{border-color:var(--route);color:var(--ink);background:var(--bg);font-weight:500;}
+  .name-opt .dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--ink-faint);flex-shrink:0;position:relative;}
+  .name-opt.active .dot{border-color:var(--route);}
+  .name-opt.active .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--route);}
+
   /* --- tab bar --- */
   .tabbar{
     flex-shrink:0;
@@ -362,6 +379,21 @@
   <!-- REGLAGES -->
   <section class="view" id="view-settings">
     <div class="settings-card">
+      <h3>Nom de l'app</h3>
+      <div class="name-options">
+        <div class="name-opt" data-name="boulogne"><span class="dot"></span>Road to Boulogne</div>
+        <div class="name-opt" data-name="paris"><span class="dot"></span>Road to Paris</div>
+        <div class="name-opt" data-name="beaufortain"><span class="dot"></span>Road to Beaufortain</div>
+      </div>
+    </div>
+    <div class="settings-card">
+      <h3>Objectifs affichés</h3>
+      <p>Masque les plans et infos d'une course une fois qu'elle est passée ou si tu ne veux plus la suivre.</p>
+      <div class="toggle-row"><span>Semi de Boulogne-Billancourt</span><label class="switch"><input type="checkbox" id="toggle-semi"><span class="slider"></span></label></div>
+      <div class="toggle-row"><span>Marathon de Paris</span><label class="switch"><input type="checkbox" id="toggle-marathon"><span class="slider"></span></label></div>
+      <div class="toggle-row"><span>Trail du Beaufortain</span><label class="switch"><input type="checkbox" id="toggle-beaufortain"><span class="slider"></span></label></div>
+    </div>
+    <div class="settings-card">
       <h3>Progression</h3>
       <p>Tes séances cochées sont enregistrées uniquement sur cet appareil (aucune donnée envoyée ailleurs).</p>
       <button class="btn-danger" id="reset-btn">Réinitialiser toute la progression</button>
@@ -379,7 +411,7 @@
     </div>
     <div class="settings-card">
       <h3>Repères</h3>
-      <p>Marathon de Paris — objectif 3h20, 11 avril 2027<br>Semi de Boulogne-Billancourt — objectif 1h35, 15 nov 2026<br>Trail du Beaufortain — 110km / 7800m D+, 18-19 juillet 2027</p>
+      <p id="reperes-text"></p>
     </div>
     <div class="settings-card">
       <h3>Mise à jour</h3>
@@ -440,15 +472,48 @@ PLAN.blocks.forEach((b, bIdx)=>{
 });
 const ACTIVE_DAYS = ALL_DAYS.filter(e => e.day.tag !== 'rest');
 
+const SETTINGS_KEY = 'beaufortain_settings_v1';
+const DEFAULT_SETTINGS = { showSemi:true, showMarathon:true, showBeaufortain:true, appName:'beaufortain' };
+function loadSettings(){
+  try{ return Object.assign({}, DEFAULT_SETTINGS, JSON.parse(localStorage.getItem(SETTINGS_KEY))); }catch(e){ return Object.assign({}, DEFAULT_SETTINGS); }
+}
+function saveSettings(s){
+  try{ localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); }catch(e){}
+}
+let settings = loadSettings();
+
+const RACE_BLOCK_IDS = {
+  semi: ['semi'],
+  marathon: ['bloc3','bloc4','bloc5','bloc6'],
+  beaufortain: ['bloc7','bloc8','bloc9','bloc10']
+};
+function blockVisible(blockId){
+  if(RACE_BLOCK_IDS.semi.includes(blockId)) return settings.showSemi;
+  if(RACE_BLOCK_IDS.marathon.includes(blockId)) return settings.showMarathon;
+  if(RACE_BLOCK_IDS.beaufortain.includes(blockId)) return settings.showBeaufortain;
+  return true;
+}
+function visibleActiveDays(){
+  return ACTIVE_DAYS.filter(e => blockVisible(e.b.id));
+}
+
+const APP_NAMES = { boulogne:'Road to Boulogne', paris:'Road to Paris', beaufortain:'Road to Beaufortain' };
+function applyAppName(){
+  const name = APP_NAMES[settings.appName] || APP_NAMES.beaufortain;
+  document.getElementById('header-title').textContent = name;
+  document.title = name;
+}
+
 function findTodayEntry(){
   const t = todayISO();
+  const days = visibleActiveDays();
   // an overdue, unchecked session takes priority over today's/future sessions
-  const overdue = ACTIVE_DAYS.find(e => e.day.date < t && !progress[e.id]);
+  const overdue = days.find(e => e.day.date < t && !progress[e.id]);
   if(overdue) return overdue;
-  let entry = ACTIVE_DAYS.find(e => e.day.date === t);
+  let entry = days.find(e => e.day.date === t);
   if(entry) return entry;
   // find nearest upcoming active day
-  const future = ACTIVE_DAYS.filter(e => e.day.date > t);
+  const future = days.filter(e => e.day.date > t);
   if(future.length) return future[0];
   return null;
 }
@@ -466,8 +531,9 @@ function shortDay(iso){
 function dayNum(iso){ return iso.split('-')[2]; }
 
 function renderStats(){
-  const totalDays = ACTIVE_DAYS.length;
-  const doneDays = ACTIVE_DAYS.filter(e => progress[e.id]).length;
+  const days = visibleActiveDays();
+  const totalDays = days.length;
+  const doneDays = days.filter(e => progress[e.id]).length;
   const pct = totalDays ? Math.round(doneDays/totalDays*100) : 0;
 
   const t = todayISO();
@@ -480,11 +546,11 @@ function renderStats(){
   const marathonEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('MARATHON DE PARIS'));
   const beaufortainEntry = ACTIVE_DAYS.find(e => e.day.tag==='race' && e.day.text.includes('BEAUFORTAIN') && e.day.text.includes('Jour 1'));
 
-  document.getElementById('stats-row').innerHTML = `
-    <div class="stat-card"><b>${semiEntry?weeksUntil(semiEntry.day.date):'—'}sem</b><span>avant semi</span></div>
-    <div class="stat-card"><b>${marathonEntry?weeksUntil(marathonEntry.day.date):'—'}sem</b><span>avant marathon</span></div>
-    <div class="stat-card"><b>${beaufortainEntry?weeksUntil(beaufortainEntry.day.date):'—'}sem</b><span>avant beaufortain</span></div>
-  `;
+  const cards = [];
+  if(settings.showSemi) cards.push(`<div class="stat-card"><b>${semiEntry?weeksUntil(semiEntry.day.date):'—'}sem</b><span>avant semi</span></div>`);
+  if(settings.showMarathon) cards.push(`<div class="stat-card"><b>${marathonEntry?weeksUntil(marathonEntry.day.date):'—'}sem</b><span>avant marathon</span></div>`);
+  if(settings.showBeaufortain) cards.push(`<div class="stat-card"><b>${beaufortainEntry?weeksUntil(beaufortainEntry.day.date):'—'}sem</b><span>avant beaufortain</span></div>`);
+  document.getElementById('stats-row').innerHTML = cards.join('');
 
   // move today marker along route (0 -> 340 on x axis of svg viewBox 350)
   const marker = document.getElementById('today-marker');
@@ -528,7 +594,7 @@ function renderToday(){
   `;
 
   // upcoming list: next 6 active days after entry.date (or from today)
-  const upcoming = ACTIVE_DAYS.filter(e => e.day.date > (isToday?t:entry.day.date)).slice(0,6);
+  const upcoming = visibleActiveDays().filter(e => e.day.date > (isToday?t:entry.day.date)).slice(0,6);
   document.getElementById('upcoming-list').innerHTML = upcoming.map(e => rowHtml(e)).join('');
 }
 
@@ -579,6 +645,7 @@ function renderPlan(){
   const t = todayISO();
   const container = document.getElementById('blocks-container');
   container.innerHTML = PLAN.blocks.map((b, bIdx)=>{
+    if(!blockVisible(b.id)) return '';
     const bp = blockProgress(b, bIdx);
     const isOpen = openBlocks[bIdx];
     const weeksHtml = b.weeks.map((w, wIdx)=>{
@@ -660,13 +727,57 @@ document.getElementById('reload-btn').addEventListener('click', ()=>{
   location.replace(url);
 });
 
+function renderReperes(){
+  const lines = [];
+  if(settings.showMarathon) lines.push('Marathon de Paris — objectif 3h20, 11 avril 2027');
+  if(settings.showSemi) lines.push('Semi de Boulogne-Billancourt — objectif 1h35, 15 nov 2026');
+  if(settings.showBeaufortain) lines.push('Trail du Beaufortain — 110km / 7800m D+, 18-19 juillet 2027');
+  document.getElementById('reperes-text').innerHTML = lines.join('<br>') || 'Aucun objectif affiché pour le moment.';
+}
+
+function renderSettingsControls(){
+  document.getElementById('toggle-semi').checked = settings.showSemi;
+  document.getElementById('toggle-marathon').checked = settings.showMarathon;
+  document.getElementById('toggle-beaufortain').checked = settings.showBeaufortain;
+  document.querySelectorAll('.name-opt').forEach(el=>{
+    el.classList.toggle('active', el.dataset.name === settings.appName);
+  });
+}
+
+document.getElementById('toggle-semi').addEventListener('change', e=>{
+  settings.showSemi = e.target.checked;
+  saveSettings(settings);
+  renderAll();
+});
+document.getElementById('toggle-marathon').addEventListener('change', e=>{
+  settings.showMarathon = e.target.checked;
+  saveSettings(settings);
+  renderAll();
+});
+document.getElementById('toggle-beaufortain').addEventListener('change', e=>{
+  settings.showBeaufortain = e.target.checked;
+  saveSettings(settings);
+  renderAll();
+});
+document.querySelectorAll('.name-opt').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    settings.appName = el.dataset.name;
+    saveSettings(settings);
+    applyAppName();
+    renderSettingsControls();
+  });
+});
+
 function renderAll(){
   renderStats();
   renderToday();
   renderPlan();
+  renderReperes();
+  renderSettingsControls();
 }
 
 initCurrentBlockOpen();
+applyAppName();
 renderAll();
 </script>
 </body>
