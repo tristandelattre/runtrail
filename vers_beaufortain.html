@@ -198,6 +198,20 @@
   .switch input:checked + .slider{background:var(--moss);}
   .switch input:checked + .slider::before{transform:translateX(18px);}
 
+  /* --- nutrition --- */
+  .meal-card{background:var(--card);border:1px solid var(--card-line);border-radius:16px;padding:16px;margin-bottom:12px;}
+  .meal-card h3{font-family:'Space Grotesk',sans-serif;font-size:15px;margin:0 0 4px;display:flex;align-items:center;gap:8px;}
+  .meal-card .base{font-size:12.5px;color:var(--ink);font-weight:500;line-height:1.5;margin:0 0 12px;}
+  .meal-variant{padding:10px 0;border-top:1px solid var(--card-line);}
+  .meal-variant:first-child{border-top:none;padding-top:0;}
+  .meal-variant .vlbl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--route);margin-bottom:3px;}
+  .meal-variant .vtxt{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+  .phase-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:8px 0;border-top:1px solid var(--card-line);}
+  .phase-row:first-child{border-top:none;padding-top:0;}
+  .phase-row .plbl{font-size:12.5px;font-weight:500;color:var(--ink);flex:1;min-width:0;}
+  .phase-row .pdate{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);white-space:nowrap;}
+  .phase-row .pnote{font-size:11px;color:var(--ink-soft);width:100%;margin-top:2px;}
+
   /* --- tab bar --- */
   .tabbar{
     flex-shrink:0;
@@ -404,6 +418,124 @@
       <button class="btn-danger" id="reload-btn">Recharger la dernière version</button>
     </div>
   </section>
+
+  <!-- NUTRITION -->
+  <section class="view" id="view-nutrition">
+    <p class="lead">Même structure de repas toute l'année (œufs/yaourt le matin, poulet ou dinde + légumes le midi) — ce qui change selon la journée, c'est la quantité de féculents autour.</p>
+
+    <div class="section-label">Calendrier des phases</div>
+    <div class="settings-card">
+      <div class="phase-row">
+        <span class="plbl">Reprise + Semi</span>
+        <span class="pdate">24 août → 15 nov</span>
+        <span class="pnote">Perte de poids — féculents réduits les jours calmes</span>
+      </div>
+      <div class="phase-row">
+        <span class="plbl">Bloc 3 — Base marathon</span>
+        <span class="pdate">14 déc → 14 fév</span>
+        <span class="pnote">Encore réduit en début de bloc, puis retour à la normale</span>
+      </div>
+      <div class="phase-row">
+        <span class="plbl">Bloc 4 — Spécifique</span>
+        <span class="pdate">15 fév → 28 mars</span>
+        <span class="pnote">Plus de déficit — féculents normaux à généreux tous les jours</span>
+      </div>
+      <div class="phase-row">
+        <span class="plbl">Bloc 5 — Affûtage</span>
+        <span class="pdate">29 mars → 11 avril</span>
+        <span class="pnote">Normal puis charge glucidique les 2-3 derniers jours</span>
+      </div>
+    </div>
+
+    <div class="section-label">Repas types</div>
+    <div class="meal-card">
+      <h3>🌅 Petit-déjeuner</h3>
+      <p class="base">Base : 2-3 œufs (brouillés ou omelette) + 1 yaourt grec nature + fruits</p>
+      <div class="meal-variant">
+        <div class="vlbl">Jour calme / perte de poids</div>
+        <div class="vtxt">Œufs + yaourt + une poignée de fruits rouges. Pas de pain ni flocons ce jour-là.</div>
+      </div>
+      <div class="meal-variant">
+        <div class="vlbl">Jour séance qualité / sortie longue</div>
+        <div class="vtxt">Ajoute 40-50g de flocons d'avoine (dans le yaourt ou à côté) + 1 banane, pour alimenter la séance à venir.</div>
+      </div>
+      <div class="meal-variant">
+        <div class="vlbl">Bloc 4 — gros volume</div>
+        <div class="vtxt">Flocons d'avoine + banane systématiques, même les jours faciles.</div>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <h3>🍽️ Déjeuner</h3>
+      <p class="base">Base : 150-180g poulet ou dinde + ratatouille généreuse (courgette, aubergine, tomate) + féculent variable</p>
+      <div class="meal-variant">
+        <div class="vlbl">Jour calme / perte de poids</div>
+        <div class="vtxt">Féculent réduit ou absent — la ratatouille et le poulet suffisent à bien rassasier (fibres + protéines).</div>
+      </div>
+      <div class="meal-variant">
+        <div class="vlbl">Jour séance qualité / sortie longue</div>
+        <div class="vtxt">Ajoute 150-200g de riz, pâtes ou pomme de terre cuits.</div>
+      </div>
+      <div class="meal-variant">
+        <div class="vlbl">Bloc 4 — gros volume</div>
+        <div class="vtxt">Féculent systématique, 200g+ à chaque déjeuner.</div>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <h3>🌙 Dîner</h3>
+      <p class="base">Base : poisson, œufs ou volaille + légumes verts (haricots, brocolis, épinards...) + féculent variable</p>
+      <div class="meal-variant">
+        <div class="vlbl">Jour calme / perte de poids</div>
+        <div class="vtxt">Féculent réduit, comme au déjeuner.</div>
+      </div>
+      <div class="meal-variant">
+        <div class="vlbl">Jour séance qualité / sortie longue</div>
+        <div class="vtxt">Portion normale de féculent pour bien récupérer.</div>
+      </div>
+      <div class="meal-variant">
+        <div class="vlbl">Bloc 4 — gros volume</div>
+        <div class="vtxt">Féculent généreux à chaque dîner.</div>
+      </div>
+    </div>
+
+    <div class="settings-card">
+      <h3>Collations</h3>
+      <p>Surtout utile en Bloc 3-4, avant/après sorties longues et fractionné : yaourt + fruit, poignée d'amandes, ou tranche de pain avec un peu de miel avant une séance.</p>
+    </div>
+
+    <div class="settings-card">
+      <h3>Protéines</h3>
+      <p>Une source de protéines à chaque repas (œufs/yaourt le matin, poulet/dinde le midi, poisson/œufs/volaille le soir) — c'est déjà ta structure actuelle, l'essentiel est de ne jamais sauter un repas protéiné pendant la perte de poids.</p>
+    </div>
+
+    <div class="section-label">3 derniers jours avant le marathon</div>
+    <div class="settings-card">
+      <p>La ratatouille (riche en fibres) peut causer des soucis digestifs juste avant l'effort — on change temporairement la structure :</p>
+      <div class="phase-row">
+        <span class="plbl">J-3 / J-2</span>
+        <span class="pdate"></span>
+        <span class="pnote">Œufs + yaourt le matin inchangés. Au déjeuner, remplace la ratatouille par des légumes cuits plus doux (carottes, courgettes sans peau) et augmente fortement le féculent (250-300g de pâtes ou riz blanc).</span>
+      </div>
+      <div class="phase-row">
+        <span class="plbl">J-1</span>
+        <span class="pdate"></span>
+        <span class="pnote">Encore plus de féculents simples (pâtes blanches, riz blanc, pain blanc, banane) — on évite légumineuses et fibres importantes.</span>
+      </div>
+      <p style="margin:10px 0 0;">Une prise de poids de 1-2kg ces jours-là est normale (glycogène stocké avec de l'eau) — pas de la graisse, c'est le carburant pour la course.</p>
+    </div>
+
+    <div class="section-label">Jour J</div>
+    <div class="settings-card">
+      <p><b>Petit-déj course (3-4h avant le départ)</b> : plutôt que les œufs habituels (plus longs à digérer), privilégie flocons d'avoine + banane + un peu de miel.</p>
+      <p><b>Pendant la course</b> : 60-90g de glucides/heure (gels, barres, boissons énergétiques) — à tester à l'entraînement avant le jour J, jamais un produit nouveau le jour de la course.</p>
+    </div>
+
+    <div class="settings-card">
+      <h3>Après la course</h3>
+      <p>Retour libre aux menus habituels, sans restriction — priorité à la récupération. Pour reperdre du poids, attends 2-3 semaines de récupération complète.</p>
+    </div>
+  </section>
 </main>
 
 <div class="tabbar">
@@ -418,6 +550,10 @@
   <button class="tab" data-view="ppg">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M4 9l3-3 3 3-3 3-3-3zM14 19l3-3 3 3-3 3-3-3z"/></svg>
     <span>PPG</span>
+  </button>
+  <button class="tab" data-view="nutrition">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+    <span>Nutrition</span>
   </button>
   <button class="tab" data-view="settings">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
