@@ -198,13 +198,6 @@
   .switch input:checked + .slider{background:var(--moss);}
   .switch input:checked + .slider::before{transform:translateX(18px);}
 
-  .name-options{display:flex;flex-direction:column;gap:8px;}
-  .name-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--card-line);border-radius:12px;cursor:pointer;font-size:13px;color:var(--ink-soft);}
-  .name-opt.active{border-color:var(--route);color:var(--ink);background:var(--bg);font-weight:500;}
-  .name-opt .dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--ink-faint);flex-shrink:0;position:relative;}
-  .name-opt.active .dot{border-color:var(--route);}
-  .name-opt.active .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--route);}
-
   /* --- tab bar --- */
   .tabbar{
     flex-shrink:0;
@@ -379,16 +372,8 @@
   <!-- REGLAGES -->
   <section class="view" id="view-settings">
     <div class="settings-card">
-      <h3>Nom de l'app</h3>
-      <div class="name-options">
-        <div class="name-opt" data-name="boulogne"><span class="dot"></span>Road to Boulogne</div>
-        <div class="name-opt" data-name="paris"><span class="dot"></span>Road to Paris</div>
-        <div class="name-opt" data-name="beaufortain"><span class="dot"></span>Road to Beaufortain</div>
-      </div>
-    </div>
-    <div class="settings-card">
       <h3>Objectifs affichés</h3>
-      <p>Masque les plans et infos d'une course une fois qu'elle est passée ou si tu ne veux plus la suivre.</p>
+      <p>Masque les plans et infos d'une course une fois qu'elle est passée ou si tu ne veux plus la suivre. Le nom de l'app suit automatiquement l'objectif le plus lointain encore coché.</p>
       <div class="toggle-row"><span>Semi de Boulogne-Billancourt</span><label class="switch"><input type="checkbox" id="toggle-semi"><span class="slider"></span></label></div>
       <div class="toggle-row"><span>Marathon de Paris</span><label class="switch"><input type="checkbox" id="toggle-marathon"><span class="slider"></span></label></div>
       <div class="toggle-row"><span>Trail du Beaufortain</span><label class="switch"><input type="checkbox" id="toggle-beaufortain"><span class="slider"></span></label></div>
@@ -473,7 +458,7 @@ PLAN.blocks.forEach((b, bIdx)=>{
 const ACTIVE_DAYS = ALL_DAYS.filter(e => e.day.tag !== 'rest');
 
 const SETTINGS_KEY = 'beaufortain_settings_v1';
-const DEFAULT_SETTINGS = { showSemi:true, showMarathon:true, showBeaufortain:true, appName:'beaufortain' };
+const DEFAULT_SETTINGS = { showSemi:true, showMarathon:true, showBeaufortain:true };
 function loadSettings(){
   try{ return Object.assign({}, DEFAULT_SETTINGS, JSON.parse(localStorage.getItem(SETTINGS_KEY))); }catch(e){ return Object.assign({}, DEFAULT_SETTINGS); }
 }
@@ -498,8 +483,15 @@ function visibleActiveDays(){
 }
 
 const APP_NAMES = { boulogne:'Road to Boulogne', paris:'Road to Paris', beaufortain:'Road to Beaufortain' };
+function computedAppName(){
+  // the name reflects the furthest goal still being followed
+  if(settings.showBeaufortain) return APP_NAMES.beaufortain;
+  if(settings.showMarathon) return APP_NAMES.paris;
+  if(settings.showSemi) return APP_NAMES.boulogne;
+  return APP_NAMES.beaufortain;
+}
 function applyAppName(){
-  const name = APP_NAMES[settings.appName] || APP_NAMES.beaufortain;
+  const name = computedAppName();
   document.getElementById('header-title').textContent = name;
   document.title = name;
 }
@@ -739,9 +731,6 @@ function renderSettingsControls(){
   document.getElementById('toggle-semi').checked = settings.showSemi;
   document.getElementById('toggle-marathon').checked = settings.showMarathon;
   document.getElementById('toggle-beaufortain').checked = settings.showBeaufortain;
-  document.querySelectorAll('.name-opt').forEach(el=>{
-    el.classList.toggle('active', el.dataset.name === settings.appName);
-  });
 }
 
 document.getElementById('toggle-semi').addEventListener('change', e=>{
@@ -759,16 +748,9 @@ document.getElementById('toggle-beaufortain').addEventListener('change', e=>{
   saveSettings(settings);
   renderAll();
 });
-document.querySelectorAll('.name-opt').forEach(el=>{
-  el.addEventListener('click', ()=>{
-    settings.appName = el.dataset.name;
-    saveSettings(settings);
-    applyAppName();
-    renderSettingsControls();
-  });
-});
 
 function renderAll(){
+  applyAppName();
   renderStats();
   renderToday();
   renderPlan();
@@ -777,7 +759,6 @@ function renderAll(){
 }
 
 initCurrentBlockOpen();
-applyAppName();
 renderAll();
 </script>
 </body>
