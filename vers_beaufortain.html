@@ -146,7 +146,8 @@
   .row .txt{font-size:12.5px;line-height:1.4;flex:1;color:var(--ink);}
   .row.done .txt{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--ink-faint);}
   .row .ppgtag{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--route);border:1px solid var(--route-soft);border-radius:8px;padding:1px 5px;margin-left:6px;white-space:nowrap;}
-  .garmin-btn{width:26px;height:26px;flex-shrink:0;border-radius:8px;border:1px solid var(--card-line);background:var(--bg);font-size:12px;line-height:1;cursor:pointer;}
+  .garmin-btn{width:26px;height:26px;flex-shrink:0;border-radius:8px;border:1px solid var(--card-line);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;}
+  .garmin-btn svg{width:15px;height:15px;}
   .check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink-faint);flex-shrink:0;cursor:pointer;position:relative;background:transparent;}
   .check.done{background:var(--moss);border-color:var(--moss);}
   .check.done::after{content:'';position:absolute;left:6px;top:3px;width:4px;height:8px;border:solid var(--card);border-width:0 2px 2px 0;transform:rotate(45deg);}
@@ -877,7 +878,7 @@ function rowHtml(e){
       <span class="date">${dayNum(e.day.date)}<b>${shortDay(e.day.date)}</b></span>
       <span class="marker ${e.day.tag}"></span>
       <span class="txt">${e.day.text}${e.day.hasPPG ? '<span class="ppgtag">+PPG</span>' : ''}</span>
-      ${e.day.garminSteps ? `<button class="garmin-btn" title="Télécharger pour Garmin (.FIT)" onclick="downloadFitWorkout('${e.id}')">⌚</button>` : ''}
+      ${e.day.garminSteps ? `<button class="garmin-btn" title="Télécharger pour Garmin (.FIT)" onclick="downloadFitWorkout('${e.id}')"><svg viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="5" fill="#000000"/><path d="M7 6.5l9.5 5.5-9.5 5.5v-11z" fill="#fff"/></svg></button>` : ''}
       <button class="check ${done?'done':''}" onclick="toggleDay('${e.id}')"></button>
     </div>
   `;
