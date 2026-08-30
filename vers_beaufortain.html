@@ -788,7 +788,7 @@ function renderPlan(){
     const weeksHtml = b.weeks.map((w, wIdx)=>{
       const isCurrentWeek = w.days.some(d => d.date === t) || (w.days[0].date <= t && t <= w.days[w.days.length-1].date);
       const wOpen = openWeeks[bIdx+'-'+wIdx] !== undefined ? openWeeks[bIdx+'-'+wIdx] : isCurrentWeek;
-      const rows = w.days.filter(day => day.tag !== 'rest').map((day, dIdx)=> rowHtml({b,bIdx,w,wIdx,day,dIdx: w.days.indexOf(day),id:dayId(bIdx,wIdx,w.days.indexOf(day))})).join('');
+      const rows = w.days.filter(day => day.tag !== 'rest' || day.hasPPG).map((day, dIdx)=> rowHtml({b,bIdx,w,wIdx,day,dIdx: w.days.indexOf(day),id:dayId(bIdx,wIdx,w.days.indexOf(day))})).join('');
       return `
         <div class="week ${wOpen?'open':''} ${isCurrentWeek?'current':''}" data-block="${bIdx}" data-week="${wIdx}">
           <div class="week-head" onclick="toggleWeek(${bIdx},${wIdx})">
