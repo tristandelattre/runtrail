@@ -104,6 +104,8 @@
   .stat-card span{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-faint);}
 
   .section-label{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--ink);margin:18px 2px 8px;}
+  .upcoming-week-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--moss);padding:10px 12px 4px;border-top:1px solid var(--card-line);}
+  .upcoming-week-label:first-child{border-top:none;padding-top:12px;}
 
   /* --- Plan tab: block accordions --- */
   .block-wrap{margin-bottom:10px;border-radius:16px;overflow:hidden;border:1px solid var(--card-line);background:var(--card);}
@@ -723,7 +725,14 @@ function renderToday(){
 
   // upcoming list: next 6 active days after entry.date (or from today)
   const upcoming = visibleActiveDays().filter(e => e.day.date > (isToday?t:entry.day.date)).slice(0,6);
-  document.getElementById('upcoming-list').innerHTML = upcoming.map(e => rowHtml(e)).join('');
+  let lastWeekKey = null;
+  const upcomingHtml = upcoming.map(e => {
+    const weekKey = e.bIdx+'-'+e.wIdx;
+    const label = weekKey !== lastWeekKey ? `<div class="upcoming-week-label">${e.w.label}</div>` : '';
+    lastWeekKey = weekKey;
+    return label + rowHtml(e);
+  }).join('');
+  document.getElementById('upcoming-list').innerHTML = upcomingHtml;
 }
 
 function rowHtml(e){
@@ -833,9 +842,15 @@ function initCurrentBlockOpen(){
 
 function switchView(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.getElementById('view-'+name).classList.add('active');
+  const view = document.getElementById('view-'+name);
+  view.classList.add('active');
   document.querySelectorAll('.tab').forEach(tb=>tb.classList.toggle('active', tb.dataset.view===name));
-  document.querySelector('main').scrollTop = 0;
+  const currentWeek = view.querySelector('.week.current');
+  if(currentWeek){
+    (currentWeek.closest('.block-wrap') || currentWeek).scrollIntoView({block:'start'});
+  } else {
+    document.querySelector('main').scrollTop = 0;
+  }
 }
 
 document.querySelectorAll('.tab').forEach(tb=>{
