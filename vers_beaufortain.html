@@ -943,7 +943,7 @@ function renderPlan(){
         <div class="week ${wOpen?'open':''} ${isCurrentWeek?'current':''}" data-block="${bIdx}" data-week="${wIdx}">
           <div class="week-head" onclick="toggleWeek(${bIdx},${wIdx})">
             <span class="lbl">${w.label.split('—')[0].trim()}${w.weekTag==='peak' ? '<span class="week-tag peak">PIC</span>' : w.weekTag==='rest' ? '<span class="week-tag rest">REPOS</span>' : ''}${isCurrentWeek?' · en cours':''}</span>
-            <span class="vol">${w.dateRange}${w.volume ? ' · '+w.volume : ''}</span>
+            <span class="vol">${frDate(w.days[0].date)}${w.volume ? ' · '+w.volume : ''}</span>
           </div>
           <div class="week-body">${rows}</div>
         </div>
