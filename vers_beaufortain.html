@@ -719,6 +719,13 @@ function todayISO(){
   const local = new Date(d.getTime() - off*60000);
   return local.toISOString().slice(0,10);
 }
+function mondayOfWeek(dateStr){
+  const d = new Date(dateStr+'T00:00:00');
+  const day = d.getDay();
+  const diff = day === 0 ? -6 : 1 - day;
+  d.setDate(d.getDate() + diff);
+  return d.toISOString().slice(0,10);
+}
 
 // Flatten all days with references
 const ALL_DAYS = [];
@@ -773,8 +780,11 @@ function applyAppName(){
 function findTodayEntry(){
   const t = todayISO();
   const days = visibleActiveDays();
-  // an overdue, unchecked session takes priority over today's/future sessions
-  const overdue = days.find(e => e.day.date < t && !progress[e.id]);
+  // an overdue, unchecked session takes priority over today's/future sessions,
+  // but only within the current week — once a week is over, its unchecked
+  // sessions stop blocking the current week's session from showing
+  const weekStart = mondayOfWeek(t);
+  const overdue = days.find(e => e.day.date >= weekStart && e.day.date < t && !progress[e.id]);
   if(overdue) return overdue;
   let entry = days.find(e => e.day.date === t);
   if(entry) return entry;
